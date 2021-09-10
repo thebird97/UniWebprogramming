@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="d405b939-865b-475e-aee4-8c04ce1373d4" name="caesar.inf.elte.hu">
+        <fileTransfer rootFolder="/afs/elte.hu/user/m/madarbalin/web/WebProgramming" accessType="SFTP" host="caesar.elte.hu" port="22" sshConfigId="88ed8c46-7ad1-4503-8e34-78b542ff6ecb" sshConfig="madarbalin@caesar.elte.hu:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
