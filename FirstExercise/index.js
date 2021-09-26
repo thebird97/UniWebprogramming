@@ -248,8 +248,7 @@ for (const errorArrayKey in error_array) {
     console.log(errorArrayKey + " " + error_array[errorArrayKey])
 }
 
-console.log("forEach ");
-error_array.forEach(element => console.log(element));
+console.log("forEach ");error_array.forEach(element => console.log(element));
 
 console.log("Data structures");
 
