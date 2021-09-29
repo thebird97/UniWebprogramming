@@ -4,8 +4,8 @@ const table_selector = document.querySelector("table");
 console.log(table_selector);
 
 
-const last_id = document.querySelector("#last");
-const prims = document.querySelector(".prim");
+const last_id = document.querySelector("#last"); //id="last"
+const prims = document.querySelector(".prim"); //class="prim"
 const allPrime = document.querySelectorAll(".prim");
 console.log(allPrime); //Node list
 allPrime.forEach(e => e.style.color = "orange");
