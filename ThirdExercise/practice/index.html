@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            font-family: sans-serif;
+            background-color: gray;
+        }
+        td,th{
+            border: 1px solid black;
+        }
+        div[id*="feladat"]{
+            height: 25vh;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+            background-color: ghostwhite;
+        }
+        h2{
+            margin:0;
+        }
+        .mezo{
+            font-size: 1.5em;
+            width: 1.5em;
+            height: 1.5em;
+            text-align: center;
+        }
+    </style>
+    <title>Javascript CsoportZH</title>
+</head>
+<body>
+<main>
+    <div id="feladat1">
+        <h2>Szíriuszi számok</h2>
+        <input id="szamok">
+        <button id="megold">Megszámol</button>
+        <div id="eredmeny"></div>
+    </div>
+    <div id="feladat2">
+        <h2>Óvoda Gazdasági Hivatal</h2>
+    </div>
+    <div id="feladat3">
+        <h2>Amőba</h2>
+        <table id="amoba">
+            <tr>
+                <td class="mezo"></td>
+                <td class="mezo"></td>
+                <td class="mezo"></td>
+            </tr>
+            <tr>
+                <td class="mezo"></td>
+                <td class="mezo"></td>
+                <td class="mezo"></td>
+            </tr>
+            <tr>
+                <td class="mezo"></td>
+                <td class="mezo"></td>
+                <td class="mezo"></td>
+            </tr>
+        </table>
+    </div>
+</main>
+<script src="index.js"></script>
+</body>
+</html>
