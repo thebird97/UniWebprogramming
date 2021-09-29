@@ -28,3 +28,5 @@ function valamitCsinal(esemeny, celpont){
 // Hívás:
 
 //delegal($("szulo"), "gyerek css", "click", valamitCsinal)
+
+
