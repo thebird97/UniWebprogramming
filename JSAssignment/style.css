@@ -16,6 +16,32 @@ html {
 
 }
 */
+
+.label {
+    color: white;
+    padding: 8px;
+}
+
+.success {background-color: #04AA6D;} /* Green */
+.danger {background-color: #f44336;} /* Red */
+
+h1 {
+    color: #414040;
+    font-family: arial, sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 1px;
+    text-align: center;
+}
+label {
+    font-family: arial, sans-serif;
+}
+
+p {
+    font-family: arial, sans-serif;
+}
+
 body {
     margin: auto;
 

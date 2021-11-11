@@ -40,13 +40,115 @@ function generate_table() {
             let img = document.createElement('img');
             if (row_value % 2 !== 0 && column_value % 2 !== 0) {
                 //cellText = document.createTextNode("fix");
+                //A szélső négy fix kép
                 if(row_value===1 && column_value ===1){
-                    img.src = "\\pics\\01.png";
+                    img.src = "01.png";
                     cell.appendChild(img);
                 }
+                if(row_value===7 && column_value ===1){
+                    img.src = "01.png";
+                    img.style.transform = 'rotate(270deg)';
+                    cell.appendChild(img);
+                }
+                if(row_value===1 && column_value ===7){
+                    img.src = "01.png";
+                    img.style.transform = 'rotate(90deg)';
+                    cell.appendChild(img);
+                }
+                if(row_value===7 && column_value ===7){
+                    img.src = "01.png";
+                    img.style.transform = 'rotate(180deg)';
+                    cell.appendChild(img);
+
+                }
+                //Felső 2 középő:
+                if(row_value===1 && column_value ===3){
+                    img.src = "02.png";
+                    cell.appendChild(img);
+                }
+                if(row_value===1 && column_value ===5){
+                    img.src = "02.png";
+                    cell.appendChild(img);
+                }
+
+
+                //Alsó 2 középső
+                if(row_value===7 && column_value ===3){
+                    img.src = "02.png";
+                    img.style.transform = 'rotate(180deg)';
+                    cell.appendChild(img);
+                }
+                if(row_value===7 && column_value ===5){
+                    img.src = "02.png";
+                    img.style.transform = 'rotate(180deg)';
+                    cell.appendChild(img);
+                }
+
+                //BAL 2 Középső
+                if(row_value===3 && column_value ===1){
+                    img.src = "02.png";
+                    img.style.transform = 'rotate(270deg)';
+                    cell.appendChild(img);
+                }
+                if(row_value===5 && column_value ===1){
+                    img.src = "02.png";
+                    img.style.transform = 'rotate(270deg)';
+                    cell.appendChild(img);
+                }
+
+                //JOBB 2 középső
+                if(row_value===3 && column_value ===7){
+                    img.src = "02.png";
+                    img.style.transform = 'rotate(90deg)';
+                    cell.appendChild(img);
+                }
+                if(row_value===5 && column_value ===7){
+                    img.src = "02.png";
+                    img.style.transform = 'rotate(90deg)';
+                    cell.appendChild(img);
+                }
+
+                //KÖZEPE
+                //BAL FELSŐ
+                if(row_value===3 && column_value ===3){
+                    img.src = "02.png";
+                    img.style.transform = 'rotate(270deg)';
+                    cell.appendChild(img);
+                }
+                //KÖZEPE
+                //JOBB FELSŐ
+                if(row_value===3 && column_value ===5){
+                    img.src = "02.png";
+                    //NO rotation
+                    cell.appendChild(img);
+                }
+
+                //KÖZEPE
+                //BAL ALSÓ
+                if(row_value===5 && column_value ===3){
+                    img.src = "02.png";
+                    img.style.transform = 'rotate(180deg)';
+                    cell.appendChild(img);
+                }
+
+                //KÖZEPE
+                //JOBB ALSÓ
+                if(row_value===5 && column_value ===5){
+                    img.src = "02.png";
+                    img.style.transform = 'rotate(90deg)';
+                    cell.appendChild(img);
+                }
+
+
+
+
+
+
             } else {
+                img.src = "03.png";
+                cell.appendChild(img);
                 //cellText = document.createTextNode("row: " + row_value + ", column: " + column_value);
-                cellText = document.createTextNode(row_value + ", " + column_value);
+                //cellText = document.createTextNode(row_value + ", " + column_value);
             }
             //cell.appendChild(img);
             //cell.appendChild(cellText);
