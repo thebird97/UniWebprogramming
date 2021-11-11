@@ -2,9 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Varázslatos katakomba</title>
 </head>
 <body>
-    Alma
+<h1>Varázslatos katakomba</h1>
+<label for="playernumber">Hány játékos(1-4):</label>
+<input type="number" id="playernumber" name="playernumber"
+       min="1" max="4">
+<br>
+<label for="treasurechest">Játékosonként hány kincskártya:</label>
+<input type="number" id="treasurechest" name="treasurechest"
+       min="1" max="24">
+<br>
+<input type="button" id="start" value="Start">
+<br>
+<br>
+<br>
+<input type="button" id="description" value="A játék leírása (SHOW)">
+<div class="description_div">
+
+</div>
+
+<br>
+<br>
+<br>
+<div class="gametable">
+
+</div>
+
+
+
+<script src="script.js"></script>
 </body>
 </html>
