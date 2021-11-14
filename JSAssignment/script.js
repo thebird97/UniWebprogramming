@@ -29,10 +29,15 @@ Képek
 6 db hármas elágazás
 
  */
-const STRAIGHT_NUMBER = 13;
-const CURVE_NUMBER = 15;
-const T_NUMBER = 6;
+const MAX_CURVE_NUMBER = 15;
+const MAX_T_NUMBER = 6;
+const MAX_STRAIGHT_NUMBER = 13;
 
+let curve_counter = 0;
+let t_counter = 0;
+let straight_counter = 0;
+
+const table_size = 7;
 
 
 const SHAPES = {
@@ -138,36 +143,81 @@ class RoomShape {
 
     getRotation_Degree() {
 
-        let rotation_degree ;
-            if(this.shape_type === SHAPES.CURVE){
-                if(this.isOPEN_LEFT == true &&  this.isOPEN_UP == true && this.isOPEN_RIGHT == true && this.isOPEN_DOWN ==true){console.log("error"); return rotation_degree = 'rotate(0deg)';}
-                //DEAULT 0 forgatás
-                if(this.isOPEN_LEFT == false &&  this.isOPEN_UP == false && this.isOPEN_RIGHT == true && this.isOPEN_DOWN ==false){return rotation_degree = 'rotate(0deg)';}
-                //BALALSÓ 270
-                if(this.isOPEN_LEFT == false &&  this.isOPEN_UP == true && this.isOPEN_RIGHT == true && this.isOPEN_DOWN ==false){return rotation_degree = 'rotate(270deg)';}
-                //JOBB FELSŐ 90
-                if(this.isOPEN_LEFT == true &&  this.isOPEN_UP == false && this.isOPEN_RIGHT == false && this.isOPEN_DOWN ==true){return rotation_degree = 'rotate(90deg)';}
-                //JOBB ALSÓ 180
-                if(this.isOPEN_LEFT == true &&  this.isOPEN_UP == true && this.isOPEN_RIGHT == false && this.isOPEN_DOWN ==false){return rotation_degree = 'rotate(180deg)';}
+        let rotation_degree;
+        if (this.shape_type === SHAPES.CURVE) {
+            if (this.isOPEN_LEFT == true && this.isOPEN_UP == true && this.isOPEN_RIGHT == true && this.isOPEN_DOWN == true) {
+                console.log("error" + SHAPES.CURVE);
+                return rotation_degree = 'rotate(0deg)';
+            }
+            //DEAULT 0 forgatás
+            if (this.isOPEN_LEFT == false && this.isOPEN_UP == false && this.isOPEN_RIGHT == true && this.isOPEN_DOWN == false) {
+                return rotation_degree = 'rotate(0deg)';
+            }
+            //BALALSÓ 270
+            if (this.isOPEN_LEFT == false && this.isOPEN_UP == true && this.isOPEN_RIGHT == true && this.isOPEN_DOWN == false) {
+                return rotation_degree = 'rotate(270deg)';
+            }
+            //JOBB FELSŐ 90
+            if (this.isOPEN_LEFT == true && this.isOPEN_UP == false && this.isOPEN_RIGHT == false && this.isOPEN_DOWN == true) {
+                return rotation_degree = 'rotate(90deg)';
+            }
+            //JOBB ALSÓ 180
+            if (this.isOPEN_LEFT == true && this.isOPEN_UP == true && this.isOPEN_RIGHT == false && this.isOPEN_DOWN == false) {
+                return rotation_degree = 'rotate(180deg)';
+            }
+        }
+
+        if (this.shape_type === SHAPES.TSHAPE) {
+
+            if (this.isOPEN_LEFT == true && this.isOPEN_UP == true && this.isOPEN_RIGHT == true && this.isOPEN_DOWN == true) {
+                console.log("error" + SHAPES.CURVE);
+                return rotation_degree = 'rotate(0deg)';
+            }
+            if (this.isOPEN_LEFT == true && this.isOPEN_UP == false && this.isOPEN_RIGHT == true && this.isOPEN_DOWN == true) {
+                return rotation_degree = 'rotate(0deg)';
+            }
+            if (this.isOPEN_LEFT == true && this.isOPEN_UP == true && this.isOPEN_RIGHT == true && this.isOPEN_DOWN == false) {
+                return rotation_degree = 'rotate(180deg)';
+            }
+            if (this.isOPEN_LEFT == false && this.isOPEN_UP == true && this.isOPEN_RIGHT == true && this.isOPEN_DOWN == true) {
+                return rotation_degree = 'rotate(270deg)';
+            }
+            if (this.isOPEN_LEFT == true && this.isOPEN_UP == true && this.isOPEN_RIGHT == false && this.isOPEN_DOWN == true) {
+                return rotation_degree = 'rotate(90deg)';
             }
 
-        if(this.shape_type === SHAPES.TSHAPE){
-            if(this.isOPEN_LEFT == true &&  this.isOPEN_UP == true && this.isOPEN_RIGHT == true && this.isOPEN_DOWN ==true){console.log("error"); return rotation_degree = 'rotate(0deg)';}
-            if(this.isOPEN_LEFT == true &&  this.isOPEN_UP == false && this.isOPEN_RIGHT == true && this.isOPEN_DOWN ==true){return rotation_degree = 'rotate(0deg)';}
+        }
+
+        if (this.shape_type === SHAPES.STRAIGHT) {
+
+            if (this.isOPEN_LEFT == true && this.isOPEN_UP == true && this.isOPEN_RIGHT == true && this.isOPEN_DOWN == true) {
+                console.log("error" + SHAPES.STRAIGHT);
+                return rotation_degree = 'rotate(0deg)';
+            }
+            if (this.isOPEN_LEFT == true && this.isOPEN_UP == true && this.isOPEN_RIGHT == true && this.isOPEN_DOWN == false) {
+                console.log("error" + SHAPES.STRAIGHT);
+                return rotation_degree = 'rotate(0deg)';
+            }
+
+
+            if (this.isOPEN_LEFT == true && this.isOPEN_UP == false && this.isOPEN_RIGHT == true && this.isOPEN_DOWN == false) {
+                return rotation_degree = 'rotate(0deg)';
+            }
+
+            if (this.isOPEN_LEFT == false && this.isOPEN_UP == true && this.isOPEN_RIGHT == false && this.isOPEN_DOWN == true) {
+                return rotation_degree = 'rotate(90deg)';
+            }
+
+
         }
 
 
-
-            return rotation_degree
+        return rotation_degree
     }
 }
 
 
-
-
 function generate_table() {
-
-    const table_size = 7;
 
 
     body = gametablediv;
@@ -195,9 +245,11 @@ function generate_table() {
 
                 //BALFELSO
                 if (row_value === 1 && column_value === 1) {
+
                     let ROOM11 = new RoomShape(SHAPES.CURVE, false, false, true, false, false, true, true);
                     img.src = ROOM11.getImage();
                     img.style.transform = ROOM11.getRotation_Degree();
+
                     cell.appendChild(img);
                 }
 
@@ -206,6 +258,7 @@ function generate_table() {
                     let ROOM71 = new RoomShape(SHAPES.CURVE, false, false, true, false, true, true, false);
                     img.src = ROOM71.getImage();
                     img.style.transform = ROOM71.getRotation_Degree();
+
                     cell.appendChild(img);
                 }
 
@@ -214,6 +267,7 @@ function generate_table() {
                     let ROOM17 = new RoomShape(SHAPES.CURVE, false, false, true, true, false, false, true);
                     img.src = ROOM17.getImage();
                     img.style.transform = ROOM17.getRotation_Degree();
+
                     cell.appendChild(img);
                 }
 
@@ -222,6 +276,7 @@ function generate_table() {
                     let ROOM77 = new RoomShape(SHAPES.CURVE, false, false, true, true, true, false, false);
                     img.src = ROOM77.getImage();
                     img.style.transform = ROOM77.getRotation_Degree();
+
                     cell.appendChild(img);
 
                 }
@@ -231,6 +286,7 @@ function generate_table() {
                     let ROOM13 = new RoomShape(SHAPES.TSHAPE, false, false, true, true, false, true, true);
                     img.src = ROOM13.getImage();
                     img.style.transform = ROOM13.getRotation_Degree();
+
                     cell.appendChild(img);
                 }
 
@@ -238,86 +294,185 @@ function generate_table() {
                     let ROOM15 = new RoomShape(SHAPES.TSHAPE, false, false, true, true, false, true, true);
                     img.src = ROOM15.getImage();
                     img.style.transform = ROOM15.getRotation_Degree();
+
                     cell.appendChild(img);
                 }
-
 
 
                 //Alsó 2 középső
                 if (row_value === 7 && column_value === 3) {
-                    img.src = "02.png";
-                    img.style.transform = 'rotate(180deg)';
+                    let ROOM73 = new RoomShape(SHAPES.TSHAPE, false, false, true, true, true, true, false);
+                    img.src = ROOM73.getImage();
+                    img.style.transform = ROOM73.getRotation_Degree();
+
                     cell.appendChild(img);
                 }
                 if (row_value === 7 && column_value === 5) {
-                    img.src = "02.png";
-                    img.style.transform = 'rotate(180deg)';
+                    let ROOM75 = new RoomShape(SHAPES.TSHAPE, false, false, true, true, true, true, false);
+                    img.src = ROOM75.getImage();
+                    img.style.transform = ROOM75.getRotation_Degree();
+
                     cell.appendChild(img);
                 }
 
                 //BAL 2 Középső
                 if (row_value === 3 && column_value === 1) {
-                    img.src = "02.png";
-                    img.style.transform = 'rotate(270deg)';
+                    let ROOM31 = new RoomShape(SHAPES.TSHAPE, false, false, true, false, true, true, true);
+                    img.src = ROOM31.getImage();
+                    img.style.transform = ROOM31.getRotation_Degree();
+
                     cell.appendChild(img);
                 }
                 if (row_value === 5 && column_value === 1) {
-                    img.src = "02.png";
-                    img.style.transform = 'rotate(270deg)';
+                    let ROOM51 = new RoomShape(SHAPES.TSHAPE, false, false, true, false, true, true, true);
+                    img.src = ROOM51.getImage();
+                    img.style.transform = ROOM51.getRotation_Degree();
+
                     cell.appendChild(img);
                 }
 
+
                 //JOBB 2 középső
                 if (row_value === 3 && column_value === 7) {
-                    img.src = "02.png";
-                    img.style.transform = 'rotate(90deg)';
+                    let ROOM37 = new RoomShape(SHAPES.TSHAPE, false, false, true, true, true, false, true);
+                    img.src = ROOM37.getImage();
+
                     cell.appendChild(img);
                 }
                 if (row_value === 5 && column_value === 7) {
-                    img.src = "02.png";
-                    img.style.transform = 'rotate(90deg)';
+                    let ROOM57 = new RoomShape(SHAPES.TSHAPE, false, false, true, true, true, false, true);
+                    img.src = ROOM57.getImage();
+                    img.style.transform = ROOM57.getRotation_Degree();
+
                     cell.appendChild(img);
                 }
 
                 //KÖZEPE
                 //BAL FELSŐ
                 if (row_value === 3 && column_value === 3) {
-                    img.src = "02.png";
-                    img.style.transform = 'rotate(270deg)';
+                    let ROOM33 = new RoomShape(SHAPES.TSHAPE, false, false, true, false, true, true, true);
+                    img.src = ROOM33.getImage();
+                    img.style.transform = ROOM33.getRotation_Degree();
+
                     cell.appendChild(img);
                 }
                 //KÖZEPE
                 //JOBB FELSŐ
                 if (row_value === 3 && column_value === 5) {
-                    img.src = "02.png";
-                    //NO rotation
+                    let ROOM35 = new RoomShape(SHAPES.TSHAPE, false, false, true, true, false, true, true);
+                    img.src = ROOM35.getImage();
+                    img.style.transform = ROOM35.getRotation_Degree();
+
                     cell.appendChild(img);
                 }
 
                 //KÖZEPE
                 //BAL ALSÓ
                 if (row_value === 5 && column_value === 3) {
-                    img.src = "02.png";
-                    img.style.transform = 'rotate(180deg)';
+                    let ROOM53 = new RoomShape(SHAPES.TSHAPE, false, false, true, true, true, true, false);
+                    img.src = ROOM53.getImage();
+                    img.style.transform = ROOM53.getRotation_Degree();
+
                     cell.appendChild(img);
                 }
 
                 //KÖZEPE
                 //JOBB ALSÓ
                 if (row_value === 5 && column_value === 5) {
-                    img.src = "02.png";
-                    img.style.transform = 'rotate(90deg)';
+                    let ROOM55 = new RoomShape(SHAPES.TSHAPE, false, false, true, true, true, false, true);
+                    img.src = ROOM55.getImage();
+                    img.style.transform = ROOM55.getRotation_Degree();
+
                     cell.appendChild(img);
                 }
 
 
             } else {
-               // img.src = "03.png";
-               // cell.appendChild(img);
 
-                //cellText = document.createTextNode("row: " + row_value + ", column: " + column_value);
-                //cellText = document.createTextNode(row_value + ", " + column_value);
+                //GENERATE randomly elements
+                //RANDOM GENERÁLÁS Változatása: CURVE:1 | TSHAPE:2 | Straight:3
+                let random = Math.floor(Math.random() * 3) + 1;
+
+                //elfogyott a curve de van még t és egyenes akor 2 és 3 között legyen csak random
+                if(curve_counter > MAX_CURVE_NUMBER && random ==1 ){
+                    //van t és egyenes
+                    if( t_counter <= MAX_T_NUMBER && straight_counter <= MAX_STRAIGHT_NUMBER){let random = Math.floor(Math.random() * 3) + 2;}
+                    //nincs t csak egyenes
+                    if(t_counter > MAX_T_NUMBER && straight_counter <= MAX_STRAIGHT_NUMBER){random=3;}
+                    if(t_counter <= MAX_T_NUMBER && straight_counter <= MAX_STRAIGHT_NUMBER){random=2;}
+                }
+
+
+
+                //ELFOGYOT T alak
+                if(random === 2 && t_counter > MAX_T_NUMBER){
+                    //NINCS t de van CUVE és T
+                    if( curve_counter <= MAX_CURVE_NUMBER && straight_counter <= MAX_STRAIGHT_NUMBER){random=3;}
+                    //csak kanyar van
+                    if( curve_counter <= MAX_CURVE_NUMBER && straight_counter > MAX_STRAIGHT_NUMBER){random=1;}
+                    //CSAK egyenes van
+                    if( curve_counter > MAX_CURVE_NUMBER && straight_counter <= MAX_STRAIGHT_NUMBER){random=3;}
+                }
+
+
+                //EGYENES ELFOGYOTT
+                if(straight_counter > MAX_STRAIGHT_NUMBER && random === 3){
+                    //curve és t is van
+                    if( curve_counter <= MAX_CURVE_NUMBER && t_counter <= MAX_T_NUMBER){ random = Math.floor(Math.random() * 2) + 1;}
+                    if( curve_counter <= MAX_CURVE_NUMBER && t_counter > MAX_T_NUMBER){ random = 1;}
+                    if( curve_counter > MAX_CURVE_NUMBER && t_counter <= MAX_T_NUMBER){ random = 2}
+                }
+
+                //curve 1
+                if (random === 1 && curve_counter <= MAX_CURVE_NUMBER) {
+                    //curve
+                    let ROOM = new RoomShape(SHAPES.CURVE, false, false, false, false, false, true, true);
+                    img.src = ROOM.getImage();
+                    img.style.transform = ROOM.getRotation_Degree();
+                    cell.appendChild(img);
+                    curve_counter++;
+                }
+                //t2
+                if (random === 2 && t_counter <= MAX_T_NUMBER) {
+                    //t
+                    let ROOM = new RoomShape(SHAPES.CURVE, false, false, false, true, false, true, true);
+                    img.src = ROOM.getImage();
+                    img.style.transform = ROOM.getRotation_Degree();
+                    cell.appendChild(img);
+                    t_counter++;
+
+                }
+                //EGYENES3
+                if (random === 3 && straight_counter <= MAX_STRAIGHT_NUMBER) {
+
+                    let random_staight = Math.floor(Math.random() * 2) + 1;
+                    if (random_staight === 1) {
+
+                        //staight default azaz fekvő:
+                        let ROOM = new RoomShape(SHAPES.STRAIGHT, false, false, false, true, false, true, false);
+                        img.src = ROOM.getImage();
+                        img.style.transform = ROOM.getRotation_Degree();
+                        cell.appendChild(img);
+                    } else {
+                        //staight  álló
+                        let ROOM = new RoomShape(SHAPES.STRAIGHT, false, false, false, false, true, false, true);
+                        img.src = ROOM.getImage();
+                        img.style.transform = ROOM.getRotation_Degree();
+                        cell.appendChild(img);
+                    }
+
+                    straight_counter++;
+
+                }
+                console.log("curve: " + curve_counter<MAX_CURVE_NUMBER + "t-cnt: " + t_counter <MAX_T_NUMBER + " straight: " + straight_counter < MAX_STRAIGHT_NUMBER)
+                console.log("curve: " + curve_counter + "t-cnt: " + t_counter  + " straight: " + straight_counter )
+                console.log( curve_counter<MAX_CURVE_NUMBER )
+                console.log(  t_counter <MAX_T_NUMBER )
+                console.log( straight_counter < MAX_STRAIGHT_NUMBER)
+
+
             }
+            cell.setAttribute('id', 'ROOM' + row_value + column_value);
             //cell.appendChild(img);
             //cell.appendChild(cellText);
             row.appendChild(cell);
@@ -346,6 +501,11 @@ const gametablediv = document.querySelector(".gametable");
 function startGame() {
     //table.style.display = "block";
     gametablediv.innerHTML = "";
+
+    curve_counter = 0;
+    t_counter = 0;
+    straight_counter = 0;
+
     generate_table();
 
 }
