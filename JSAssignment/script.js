@@ -217,7 +217,7 @@ class RoomShape {
 }
 
 
-function generate_table() {
+function generate_table_without_player_and_treasure() {
 
 
     body = gametablediv;
@@ -389,86 +389,115 @@ function generate_table() {
 
             } else {
 
+                /////////////////////////////////////////////////////////////////
+                /////Mozgatható alakzatok generálása
+                let ALL_NUMBER = MAX_CURVE_NUMBER + MAX_STRAIGHT_NUMBER + MAX_T_NUMBER;
+                let counternumber = 0;
                 //GENERATE randomly elements
                 //RANDOM GENERÁLÁS Változatása: CURVE:1 | TSHAPE:2 | Straight:3
                 let random = Math.floor(Math.random() * 3) + 1;
-
-                //elfogyott a curve de van még t és egyenes akor 2 és 3 között legyen csak random
-                if(curve_counter > MAX_CURVE_NUMBER && random ==1 ){
-                    //van t és egyenes
-                    if( t_counter <= MAX_T_NUMBER && straight_counter <= MAX_STRAIGHT_NUMBER){let random = Math.floor(Math.random() * 3) + 2;}
-                    //nincs t csak egyenes
-                    if(t_counter > MAX_T_NUMBER && straight_counter <= MAX_STRAIGHT_NUMBER){random=3;}
-                    if(t_counter <= MAX_T_NUMBER && straight_counter <= MAX_STRAIGHT_NUMBER){random=2;}
-                }
+                let addcounter = 0;
 
 
-
-                //ELFOGYOT T alak
-                if(random === 2 && t_counter > MAX_T_NUMBER){
-                    //NINCS t de van CUVE és T
-                    if( curve_counter <= MAX_CURVE_NUMBER && straight_counter <= MAX_STRAIGHT_NUMBER){random=3;}
-                    //csak kanyar van
-                    if( curve_counter <= MAX_CURVE_NUMBER && straight_counter > MAX_STRAIGHT_NUMBER){random=1;}
-                    //CSAK egyenes van
-                    if( curve_counter > MAX_CURVE_NUMBER && straight_counter <= MAX_STRAIGHT_NUMBER){random=3;}
-                }
-
-
-                //EGYENES ELFOGYOTT
-                if(straight_counter > MAX_STRAIGHT_NUMBER && random === 3){
-                    //curve és t is van
-                    if( curve_counter <= MAX_CURVE_NUMBER && t_counter <= MAX_T_NUMBER){ random = Math.floor(Math.random() * 2) + 1;}
-                    if( curve_counter <= MAX_CURVE_NUMBER && t_counter > MAX_T_NUMBER){ random = 1;}
-                    if( curve_counter > MAX_CURVE_NUMBER && t_counter <= MAX_T_NUMBER){ random = 2}
-                }
-
-                //curve 1
-                if (random === 1 && curve_counter <= MAX_CURVE_NUMBER) {
-                    //curve
-                    let ROOM = new RoomShape(SHAPES.CURVE, false, false, false, false, false, true, true);
-                    img.src = ROOM.getImage();
-                    img.style.transform = ROOM.getRotation_Degree();
-                    cell.appendChild(img);
-                    curve_counter++;
-                }
-                //t2
-                if (random === 2 && t_counter <= MAX_T_NUMBER) {
-                    //t
-                    let ROOM = new RoomShape(SHAPES.CURVE, false, false, false, true, false, true, true);
-                    img.src = ROOM.getImage();
-                    img.style.transform = ROOM.getRotation_Degree();
-                    cell.appendChild(img);
-                    t_counter++;
-
-                }
-                //EGYENES3
-                if (random === 3 && straight_counter <= MAX_STRAIGHT_NUMBER) {
-
-                    let random_staight = Math.floor(Math.random() * 2) + 1;
-                    if (random_staight === 1) {
-
-                        //staight default azaz fekvő:
-                        let ROOM = new RoomShape(SHAPES.STRAIGHT, false, false, false, true, false, true, false);
+                do {
+                    //curve 1
+                    if (random === 1 && curve_counter < MAX_CURVE_NUMBER) {
+                        //curve
+                        let ROOM = new RoomShape(SHAPES.CURVE, false, false, false, false, false, true, true);
                         img.src = ROOM.getImage();
                         img.style.transform = ROOM.getRotation_Degree();
                         cell.appendChild(img);
-                    } else {
-                        //staight  álló
-                        let ROOM = new RoomShape(SHAPES.STRAIGHT, false, false, false, false, true, false, true);
-                        img.src = ROOM.getImage();
-                        img.style.transform = ROOM.getRotation_Degree();
-                        cell.appendChild(img);
+                        curve_counter++;
+                        addcounter=1;
+                    } else if (random === 1 && curve_counter === MAX_CURVE_NUMBER) {  //CURVE ELFOGYOTT
+                        //van t és egyenes
+                        if (t_counter < MAX_T_NUMBER && straight_counter < MAX_STRAIGHT_NUMBER) {
+                            let random = Math.floor(Math.random() * 3) + 2;
+                        }
+                        //nincs t csak egyenes
+                        if (t_counter === MAX_T_NUMBER && straight_counter < MAX_STRAIGHT_NUMBER) {
+                            random = 3;
+                        }
+                        // nincs egyenes csak T
+                        if (t_counter < MAX_T_NUMBER && straight_counter === MAX_STRAIGHT_NUMBER) {
+                            random = 2;
+                        }
                     }
 
-                    straight_counter++;
 
-                }
-                console.log("curve: " + curve_counter<MAX_CURVE_NUMBER + "t-cnt: " + t_counter <MAX_T_NUMBER + " straight: " + straight_counter < MAX_STRAIGHT_NUMBER)
-                console.log("curve: " + curve_counter + "t-cnt: " + t_counter  + " straight: " + straight_counter )
-                console.log( curve_counter<MAX_CURVE_NUMBER )
-                console.log(  t_counter <MAX_T_NUMBER )
-                console.log( straight_counter < MAX_STRAIGHT_NUMBER)
+                    //t2
+                    if (random === 2 && t_counter < MAX_T_NUMBER) {
+                        //t
+                        let ROOM = new RoomShape(SHAPES.CURVE, false, false, false, true, false, true, true);
+                        img.src = ROOM.getImage();
+                        img.style.transform = ROOM.getRotation_Degree();
+                        cell.appendChild(img);
+                        t_counter++;
+                        addcounter=1;
+
+                    } else if (random === 2 && t_counter === MAX_T_NUMBER) {
+                        //van curve és egyenes
+                        if (curve_counter < MAX_CURVE_NUMBER && straight_counter < MAX_STRAIGHT_NUMBER) {
+                            random = 3; //1 vagy 3
+                        }
+                        //csak kanyar van
+                        if (curve_counter < MAX_CURVE_NUMBER && straight_counter === MAX_STRAIGHT_NUMBER) {
+                            random = 1;
+                        }
+                        //CSAK egyenes van
+                        if (curve_counter === MAX_CURVE_NUMBER && straight_counter < MAX_STRAIGHT_NUMBER) {
+                            random = 3;
+                        }
+                    }
+
+
+                    //EGYENES3
+                    if (random === 3 && straight_counter < MAX_STRAIGHT_NUMBER) {
+                        //RANDOM irányú egyenes generálás
+                        let random_staight = Math.floor(Math.random() * 2) + 1;
+                        if (random_staight === 1) {
+
+                            //staight default azaz fekvő:
+                            let ROOM = new RoomShape(SHAPES.STRAIGHT, false, false, false, true, false, true, false);
+                            img.src = ROOM.getImage();
+                            img.style.transform = ROOM.getRotation_Degree();
+                            cell.appendChild(img);
+                            straight_counter++;
+                            addcounter=1;
+
+                        } else {
+                            //staight  álló
+                            let ROOM = new RoomShape(SHAPES.STRAIGHT, false, false, false, false, true, false, true);
+                            img.src = ROOM.getImage();
+                            img.style.transform = ROOM.getRotation_Degree();
+                            cell.appendChild(img);
+                            straight_counter++;
+                            addcounter=1;
+
+                        }
+
+
+                    } else if (random === 3 && straight_counter === MAX_STRAIGHT_NUMBER) {
+                        //EGYENES ELFOGYOTT
+                        //curve és t is van
+                        if (curve_counter < MAX_CURVE_NUMBER && t_counter < MAX_T_NUMBER) {
+                            random = Math.floor(Math.random() * 2) + 1;
+                        }
+                        //CSAK curve van
+                        if (curve_counter < MAX_CURVE_NUMBER && t_counter === MAX_T_NUMBER) {
+                            random = 1;
+                        }
+                        //csak T van
+                        if (curve_counter === MAX_CURVE_NUMBER && t_counter < MAX_T_NUMBER) {
+                            random = 2
+                        }
+                    }
+
+                }while (addcounter!==1);
+
+               // console.log("curve: " + curve_counter + "/" + MAX_CURVE_NUMBER + "\t t-cnt: " + t_counter + "/" + MAX_T_NUMBER + "\t straight: " + straight_counter + "/" + MAX_STRAIGHT_NUMBER)
+
+                //console.log(ALL_NUMBER==counternumber)
 
 
             }
@@ -487,7 +516,14 @@ function generate_table() {
     // appends <table> into <body>
     body.appendChild(tbl);
     // sets the border attribute of tbl to 2;
-    tbl.setAttribute("border", "2");
+    tbl.setAttribute("border", "1");
+}
+function generate_treasure() {
+    //végigmegyek a táblán és 3 darab kincs nem sarkokba
+    //Játéktér: A rácsra fel van helyezve legalább 3 kincs véletlen helyre (kivéve a sarkokat) (0,5 pont)
+}
+function spawn_player() {
+    ///Játéktér: A rácsra fel van helyezve legalább 1 játékos figurája (0,5 pont)
 }
 
 //////////CONSTANTS:
@@ -506,7 +542,9 @@ function startGame() {
     t_counter = 0;
     straight_counter = 0;
 
-    generate_table();
+    generate_table_without_player_and_treasure();
+    generate_treasure();
+    spawn_player();
 
 }
 
