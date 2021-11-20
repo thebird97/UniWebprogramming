@@ -623,26 +623,61 @@ function generate_treasure() {
 
      */
     //3 kincs felhelyzése
+    /*
     for (let i = 0; i <= 3; i++) {
         let treasureX = Math.floor(Math.random() * 6) + 2;
         let treasureY = Math.floor(Math.random() * 6) + 2;
-        let cellID = "ROOM" + treasureX + treasureY;
-        matrix[treasureX][treasureY].set_isTREASURE_IN(true);
-        document.getElementById(cellID).setAttribute('img/src', matrix[treasureX][treasureY].getImage());
-            //matrix[treasureX][treasureY].getImage();
 
-        console.log("ssrccc " + document.getElementById(cellID).src);
-        console.log(matrix[treasureX][treasureY].get_isTREASURE_IN());
-        console.log(matrix[treasureX][treasureY].getImage());
-        console.log("kincs adva a + " + cellID);
+        matrix[treasureX][treasureY].set_isTREASURE_IN(true);
+        let selectors = "#ROOM" + treasureX + treasureY + "> img";
+
+        let cellquery = document.querySelector(selectors);
+        console.log(cellquery);
+        cellquery.setAttribute('src', matrix[treasureX][treasureY].getImage());
+
+
     }
 
+     */
+
+//treasurepice db  kincs felhelyzése
+
+    for (let i = 0; i <= parseInt(treasurePiece.value); i++) {
+        let treasureX = Math.floor(Math.random() * 6) + 2;
+        let treasureY = Math.floor(Math.random() * 6) + 2;
+
+        matrix[treasureX][treasureY].set_isTREASURE_IN(true);
+        let selectors = "#ROOM" + treasureX + treasureY + "> img";
+
+        let cellquery = document.querySelector(selectors);
+        cellquery.setAttribute('src', matrix[treasureX][treasureY].getImage());
+
+
+    }
 
 
 }
 
 function spawn_player() {
-    ///Játéktér: A rácsra fel van helyezve legalább 1 játékos figurája (0,5 pont)
+///Játéktér: A rácsra fel van helyezve legalább 1 játékos figurája (0,5 pont)
+
+
+    for (let i = 0; i < parseInt(playerPiece.value); i++) {
+        let playerX = Math.floor(Math.random() * 7) + 1;
+        let playerY = Math.floor(Math.random() * 7) + 1;
+        while (matrix[playerX][playerY].get_isTREASURE_IN() === true) {
+            let playerX = Math.floor(Math.random() * 7) + 1;
+            let playerY = Math.floor(Math.random() * 7) + 1;
+
+        }
+
+        matrix[playerX][playerY].set_isPLAYER_IN(true);
+        let selectors = "#ROOM" + playerX + playerY + "> img";
+
+        let cellquery = document.querySelector(selectors);
+        cellquery.setAttribute('src', matrix[playerX][playerY].getImage());
+    }
+
 }
 
 //////////CONSTANTS:
@@ -651,10 +686,17 @@ const text = readTextFile("description.txt");
 const startButton = document.querySelector("#start");
 const descriptionButton = document.querySelector("#description");
 const gametablediv = document.querySelector(".gametable");
+const treasurePiece = document.querySelector("#treasurechest");
+const playerPiece = document.querySelector("#playernumber");
+
+const leftButton = document.querySelector("#left");
+const upButton = document.querySelector("#up");
+const rightButton = document.querySelector("#right");
+const downButton = document.querySelector("#down");
 
 
 function startGame() {
-    //table.style.display = "block";
+//table.style.display = "block";
     gametablediv.innerHTML = "";
 
     curve_counter = 0;
@@ -662,45 +704,11 @@ function startGame() {
     straight_counter = 0;
 
     generate_table_without_player_and_treasure();
-   //generate_treasure();
- //   spawn_player();
-
-
-    let cellid = document.querySelector("#ROOM11");
-    let cellchild = cellid.childNodes;
-    console.log(cellid.getAttribute('id'));
-    console.log(cellchild);
-    for(let value of cellchild.values()) {
-        console.log(value);
-    }
-
-
-
-
-/*
-
-    let getAllImages = document.getElementsByTagName('img');
-    console.log(getAllImages)
-    for (let i = 0; i < getAllImages.length; i++) {
-        (function(x) {
-            getAllImages[x].addEventListener('click', function() {
-
-                alert(this.getAttribute('src'))
-                this.setAttribute('src', '01T.png')
-
-
-            })
-
-
-        }(i))
-   }
-*/
-
-
+    generate_treasure(treasurePiece);
+    spawn_player();
 
 
 }
-
 
 
 function showDescription() {
@@ -723,6 +731,28 @@ function showDescription() {
 
 }
 
+function left_click() {
+    console.log("left_click");
+}
+
+function up_click() {
+    console.log("up_click");
+}
+
+function right_click() {
+    console.log("right_click");
+}
+
+function down_click() {
+    console.log("down_click");
+}
+
+///EVEENT LISTENERS
+
 
 startButton.addEventListener('click', startGame);
 descriptionButton.addEventListener('click', showDescription);
+leftButton.addEventListener('click', left_click);
+upButton.addEventListener('click', up_click);
+rightButton.addEventListener('click', right_click);
+downButton.addEventListener('click', down_click);
