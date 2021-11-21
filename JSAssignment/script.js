@@ -38,6 +38,7 @@ let t_counter = 0;
 let straight_counter = 0;
 
 const table_size = 7;
+let treasureCOLLECTEDCOUNTER = 0
 
 
 const SHAPES = {
@@ -686,8 +687,10 @@ const text = readTextFile("description.txt");
 const startButton = document.querySelector("#start");
 const descriptionButton = document.querySelector("#description");
 const gametablediv = document.querySelector(".gametable");
-const treasurePiece = document.querySelector("#treasurechest");
+let treasurePiece = document.querySelector("#treasurechest");
 const playerPiece = document.querySelector("#playernumber");
+const stepInfoDiv = document.querySelector("#stepinfo");
+const treasuereDiv = document.querySelector("#treauserecount");
 
 const leftButton = document.querySelector("#left");
 const upButton = document.querySelector("#up");
@@ -703,6 +706,13 @@ function startGame() {
     t_counter = 0;
     straight_counter = 0;
 
+    for (let i = 1; i < table_size + 1; i++) {
+        matrix[i] = [];
+        for (let j = 1; j < table_size + 1; j++) {
+            matrix[i][j] = undefined;
+        }
+    }
+    treasureCOLLECTEDCOUNTER = 0;
     generate_table_without_player_and_treasure();
     generate_treasure(treasurePiece);
     spawn_player();
@@ -731,20 +741,114 @@ function showDescription() {
 
 }
 
+function wherePlayerX_coordinate() {
+    for (let i = 1; i < table_size + 1; i++) {
+        for (let j = 1; j < table_size + 1; j++) {
+            if (matrix[i][j].get_isPLAYER_IN() === true) {
+                return i;
+            }
+        }
+    }
+
+}
+
+function wherePlayerY_coordinate() {
+    for (let i = 1; i < table_size + 1; i++) {
+        for (let j = 1; j < table_size + 1; j++) {
+            if (matrix[i][j].get_isPLAYER_IN() === true) {
+                return j;
+            }
+        }
+    }
+}
+
 function left_click() {
-    console.log("left_click");
+    let playerX_coordinate = wherePlayerX_coordinate();
+    let playerY_coordinate = wherePlayerY_coordinate();
+    let playerY_coordinateLEFT = parseInt(parseInt(playerY_coordinate) - 1);
+
+    if (playerY_coordinateLEFT <= 1) {
+        stepInfoDiv.innerHTML = "";
+        stepInfoDiv.innerHTML += "A játékos nem tud balra lépni (pálya széle)";
+        return 0;
+    } else if (matrix[playerX_coordinate][playerY_coordinateLEFT].get_isOPEN_RIGHT() === false) {
+        stepInfoDiv.innerHTML = "";
+        stepInfoDiv.innerHTML += "A játékos nem tud balra lépni (a másik alakzat jobbról zárt)";
+    }
+    if (matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_LEFT() === false) {
+        stepInfoDiv.innerHTML = "";
+        stepInfoDiv.innerHTML += "A játékos nem tud balra lépni a saját alakzata miatt.";
+    }
+
+    console.log("játékos helye" + playerX_coordinate + "  " + playerY_coordinate);
+    console.log("alap: " + matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_LEFT() + " " + "másik " + matrix[playerX_coordinate][playerY_coordinateLEFT].get_isOPEN_RIGHT())
+    if (matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_LEFT() === true && matrix[playerX_coordinate][playerY_coordinate - 1].get_isOPEN_RIGHT() === true) {
+
+
+        if (matrix[playerX_coordinate][playerY_coordinate - 1].get_isTREASURE_IN() === true) {
+            //remove player
+            matrix[playerX_coordinate][playerY_coordinate].set_isPLAYER_IN(false);
+            let player_selector = "#ROOM" + playerX_coordinate + playerY_coordinate + "> img";
+            let cellquery_player_selector = document.querySelector(player_selector);
+            console.log("a: " + player_selector + "\tb: " + cellquery_player_selector + "\nc: " + matrix[playerX_coordinate][playerY_coordinate].getImage());
+            cellquery_player_selector.setAttribute('src', matrix[playerX_coordinate][playerY_coordinate].getImage());
+
+            //KINCS BEGYŰJTÉSE ÉS SIMA PLAYER
+            matrix[playerX_coordinate][playerY_coordinateLEFT].set_isPLAYER_IN(true);
+            //kincs eltűntetése
+            matrix[playerX_coordinate][playerY_coordinateLEFT].set_isTREASURE_IN(false);
+            let selectors_left_step = "#ROOM" + playerX_coordinate + playerY_coordinateLEFT + "> img";
+            let cellquery_selectors_left_step = document.querySelector(selectors_left_step);
+            console.log("a: " + player_selector + "\tb: " + cellquery_player_selector + "\nc: " + matrix[playerX_coordinate][playerY_coordinateLEFT].getImage());
+            cellquery_selectors_left_step.setAttribute('src', matrix[playerX_coordinate][playerY_coordinateLEFT].getImage());
+
+
+            treasureCOLLECTEDCOUNTER+=1;
+            stepInfoDiv.innerHTML = "";
+            stepInfoDiv.innerHTML += "A játékos balra lépett és kincset nyert!";
+            treasuereDiv.innerHTML = "";
+            treasuereDiv.innerHTML = "A begyújtőtt kincsek száma: " + treasureCOLLECTEDCOUNTER;
+
+
+        } else {
+            //remove player
+            matrix[playerX_coordinate][playerY_coordinate].set_isPLAYER_IN(false);
+            let player_selector = "#ROOM" + playerX_coordinate + playerY_coordinate + "> img";
+            let cellquery_player_selector = document.querySelector(player_selector);
+            console.log("a: " + player_selector + "\tb: " + cellquery_player_selector + "\nc: " + matrix[playerX_coordinate][playerY_coordinate].getImage());
+            cellquery_player_selector.setAttribute('src', matrix[playerX_coordinate][playerY_coordinate].getImage());
+
+            //sett player left
+            matrix[playerX_coordinate][playerY_coordinateLEFT].set_isPLAYER_IN(true);
+            let selectors_left_step = "#ROOM" + playerX_coordinate + playerY_coordinateLEFT + "> img";
+            let cellquery_selectors_left_step = document.querySelector(selectors_left_step);
+            console.log("a: " + player_selector + "\tb: " + cellquery_player_selector + "\nc: " + matrix[playerX_coordinate][playerY_coordinateLEFT].getImage());
+            cellquery_selectors_left_step.setAttribute('src', matrix[playerX_coordinate][playerY_coordinateLEFT].getImage());
+
+            stepInfoDiv.innerHTML = "";
+            stepInfoDiv.innerHTML += "A játékos balra lépett";
+        }
+
+
+    }
+
+
 }
 
 function up_click() {
-    console.log("up_click");
+
+    stepInfoDiv.innerHTML = "";
+    stepInfoDiv.innerHTML += "A játékos lépése: fel";
 }
 
 function right_click() {
-    console.log("right_click");
+    stepInfoDiv.innerHTML = "";
+    stepInfoDiv.innerHTML += "A játékos lépése: jobbra";
 }
 
 function down_click() {
-    console.log("down_click");
+    stepInfoDiv.innerHTML = "";
+    stepInfoDiv.innerHTML += "A játékos lépése: balra";
 }
 
 ///EVEENT LISTENERS
