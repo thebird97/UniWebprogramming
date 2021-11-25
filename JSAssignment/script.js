@@ -1232,7 +1232,7 @@ function gameon() {
                 let KIMARADTSZOBAtmp = matrix[Xindex][table_size];
                 for (let i = table_size; i > 1; i--) {
                     matrix[Xindex][i] = matrix[Xindex][i - 1];
-                    if( matrix[Xindex][table_size].get_isPLAYER_IN()){
+                    if (matrix[Xindex][table_size].get_isPLAYER_IN()) {
                         matrix[Xindex][table_size].set_isPLAYER_IN(true);
                     }
                 }
