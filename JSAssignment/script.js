@@ -54,7 +54,7 @@ const SHAPES = {
     //WITH treasure
     CURVET: "01T.png",
     TSHAPET: "02T.png",
-    STRAIGHTT: "02T.png",
+    STRAIGHTT: "03T.png",
 }
 
 /**
@@ -690,7 +690,7 @@ function spawn_player() {
 
         let cellquery = document.querySelector(selectors);
         cellquery.setAttribute('src', matrix[playerX][playerY].getImage());
-        console.log("fontos: " + matrix[playerX][playerY].getImage() + " " + matrix[playerX][playerY].getRotation_Degree());
+        //console.log("fontos: " + matrix[playerX][playerY].getImage() + " " + matrix[playerX][playerY].getRotation_Degree());
         cellquery.setAttribute('style', matrix[playerX][playerY].getRotation_Degree());
     }
 
@@ -1201,49 +1201,64 @@ function gameon() {
             //console.log(cell.innerHTML, row.rowIndex, cell.cellIndex, cell.id);
             let Xindex = row.rowIndex + 1;
             let Yindex = cell.cellIndex + 1;
-            console.log("ALAP ELEM INFÓK: Xindex " + Xindex + "\ty: " + Yindex +
-                "\nshapetype" + matrix[Xindex][Yindex].get_shape_type() + " " +
-                "\nplayer: " + matrix[Xindex][Yindex].get_isPLAYER_IN() + " " +
-                "\ntreauser: " + matrix[Xindex][Yindex].get_isTREASURE_IN() + " " +
-                "\nconstans: " + matrix[Xindex][Yindex].get_isConstant() + " " +
-                "\nbal: " + matrix[Xindex][Yindex].get_isOPEN_LEFT() + " " +
-                "\nfel: " + matrix[Xindex][Yindex].get_isOPEN_UP() + " " +
-                "\njobb: " + matrix[Xindex][Yindex].get_isOPEN_RIGHT() + " " +
-                "\nlenn: " + matrix[Xindex][Yindex].get_isOPEN_DOWN() + " " +
-                "\nkep: " + matrix[Xindex][Yindex].getImage() + " " +
-                "\nfok: " + matrix[Xindex][Yindex].getRotation_Degree() + " ");
-            console.log("----------------------------------------------");
-
+            /*  console.log("ALAP ELEM INFÓK: Xindex " + Xindex + "\ty: " + Yindex +
+                  "\nshapetype" + matrix[Xindex][Yindex].get_shape_type() + " " +
+                  "\nplayer: " + matrix[Xindex][Yindex].get_isPLAYER_IN() + " " +
+                  "\ntreauser: " + matrix[Xindex][Yindex].get_isTREASURE_IN() + " " +
+                  "\nconstans: " + matrix[Xindex][Yindex].get_isConstant() + " " +
+                  "\nbal: " + matrix[Xindex][Yindex].get_isOPEN_LEFT() + " " +
+                  "\nfel: " + matrix[Xindex][Yindex].get_isOPEN_UP() + " " +
+                  "\njobb: " + matrix[Xindex][Yindex].get_isOPEN_RIGHT() + " " +
+                  "\nlenn: " + matrix[Xindex][Yindex].get_isOPEN_DOWN() + " " +
+                  "\nkep: " + matrix[Xindex][Yindex].getImage() + " " +
+                  "\nfok: " + matrix[Xindex][Yindex].getRotation_Degree() + " ");
+              console.log("----------------------------------------------");
+              console.log("Kimaradtszoba ELEM INFÓK: Xindex " + Xindex + "\ty: " + Yindex +
+                  "\nshapetype" + KIMARADTSZOBA.get_shape_type() + " " +
+                  "\nplayer: " + KIMARADTSZOBA.get_isPLAYER_IN() + " " +
+                  "\ntreauser: " + KIMARADTSZOBA.get_isTREASURE_IN() + " " +
+                  "\nconstans: " + KIMARADTSZOBA.get_isConstant() + " " +
+                  "\nbal: " + KIMARADTSZOBA.get_isOPEN_LEFT() + " " +
+                  "\nfel: " + KIMARADTSZOBA.get_isOPEN_UP() + " " +
+                  "\njobb: " + KIMARADTSZOBA.get_isOPEN_RIGHT() + " " +
+                  "\nlenn: " + KIMARADTSZOBA.get_isOPEN_DOWN() + " " +
+                  "\nkep: " + KIMARADTSZOBA.getImage() + " " +
+                  "\nfok: " + KIMARADTSZOBA.getRotation_Degree() + " ");
+              console.log("----------------------------------------------");
+              */
             //KIMARADT ELEM BEILLESZTÉSE:
 
 
             //4 különbőző irány tolása:
             //BAL oldal tolása jobbra
-            ///  let tmp = matrix[Xindex][Yindex];
-            //    matrix[Xindex][Yindex] = KIMARADTSZOBA;
-            //  KIMARADTSZOBA = tmp;
+            //HA bal sorokból 2 4 6 akkor:
+            //Balraról jobbra eltolom
+            //Kimaradtszoba az első és az utolsó lesz a kimaradtszoba
 
-            if (Xindex === 2 || Xindex === 4 || Xindex === 6) {
 
-                // matrix[Xindex].splice(0, 0, KIMARADTSZOBA);
-                //KIMARADTSZOBA = matrix[Xindex].pop();
-
+            if (Yindex === 1 && (Xindex === 2 || Xindex === 4 || Xindex === 6)) {
 
                 let KIMARADTSZOBAtmp = matrix[Xindex][table_size];
                 for (let i = table_size; i > 1; i--) {
                     matrix[Xindex][i] = matrix[Xindex][i - 1];
-                    if (matrix[Xindex][table_size].get_isPLAYER_IN()) {
-                        matrix[Xindex][table_size].set_isPLAYER_IN(true);
-                    }
                 }
 
-                matrix[Xindex][0] = KIMARADTSZOBA;
+                matrix[Xindex][1] = KIMARADTSZOBA;
                 KIMARADTSZOBA = KIMARADTSZOBAtmp;
-                KIMARADTSZOBA.set_isPLAYER_IN(false);
+                //Ha player lenne a kimaradtszobába
+                if (KIMARADTSZOBA.get_isPLAYER_IN(true)) {
+                    matrix[Xindex][1].set_isPLAYER_IN(true);
+                    KIMARADTSZOBA.set_isPLAYER_IN(false);
+                }
+                //ha kincs lenne
+                if (KIMARADTSZOBA.get_isTREASURE_IN(true)) {
+                    matrix[Xindex][1].set_isTREASURE_IN(true);
+                    KIMARADTSZOBA.set_isTREASURE_IN(false);
+                }
+
 
 
                 for (let i = 1; i < table_size + 1; i++) {
-
                     // console.log(matrix[i][j].get_shape_type());
                     let selectors = "#ROOM" + Xindex + i + "> img";
                     let cellquery = document.querySelector(selectors);
@@ -1253,7 +1268,7 @@ function gameon() {
                 }
 
                 roomDiv.innerHTML = "";
-                roomDiv.innerHTML = "A szobák cserélve!";
+                roomDiv.innerHTML = "A szobák cserélve! (Balról jobbra csere)";
                 shapeleftDiv.innerHTML = "";
                 //shapeleftDiv.innerHTML.src = KIMARADTSZOBA.getImage();
                 let img = document.createElement("img");
@@ -1265,6 +1280,51 @@ function gameon() {
                 roomDiv.innerHTML = "A páratlan sor nem cserélhető!";
             }
 
+            //Jobbról balra csere
+            if (Yindex === 7 && (Xindex === 2 || Xindex === 4 || Xindex === 6)) {
+
+                let KIMARADTSZOBAtmp = matrix[Xindex][1];
+                for (let i = 1; i < table_size+1; i++) {
+                    matrix[Xindex][i] = matrix[Xindex][i + 1];
+                }
+
+                matrix[Xindex][table_size] = KIMARADTSZOBA;
+                KIMARADTSZOBA = KIMARADTSZOBAtmp;
+                //Ha player lenne a kimaradtszobába
+                if (KIMARADTSZOBA.get_isPLAYER_IN(true)) {
+                    matrix[Xindex][table_size].set_isPLAYER_IN(true);
+                    KIMARADTSZOBA.set_isPLAYER_IN(false);
+                }
+                //ha kincs lenne
+                if (KIMARADTSZOBA.get_isTREASURE_IN(true)) {
+                    matrix[Xindex][table_size].set_isTREASURE_IN(true);
+                    KIMARADTSZOBA.set_isTREASURE_IN(false);
+                }
+
+
+
+                for (let i = 1; i < table_size + 1; i++) {
+                    // console.log(matrix[i][j].get_shape_type());
+                    let selectors = "#ROOM" + Xindex + i + "> img";
+                    let cellquery = document.querySelector(selectors);
+                    cellquery.setAttribute('src', matrix[Xindex][i].getImage());
+                    cellquery.setAttribute('style', matrix[Xindex][i].getRotation_Degree());
+
+                }
+
+
+
+                roomDiv.innerHTML = "";
+                roomDiv.innerHTML = "A szobák cserélve! (jobbról balra csere)";
+                shapeleftDiv.innerHTML = "";
+                //shapeleftDiv.innerHTML.src = KIMARADTSZOBA.getImage();
+                let img = document.createElement("img");
+                img.setAttribute('src', KIMARADTSZOBA.getImage());
+                img.setAttribute('style', KIMARADTSZOBA.getRotation_Degree());
+                shapeleftDiv.appendChild(img);
+            } else {
+                roomDiv.innerHTML = "A páratlan sor nem cserélhető!";
+            }
 
         }
     );

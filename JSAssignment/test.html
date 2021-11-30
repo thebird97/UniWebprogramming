@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    console.log("hi");
+    let matrix = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9],
+
+    ];
+    //fentről lefele balra
+    let Yindex = 1;
+    let KIMARADTSZOBA = 999;
+    let size = 3;
+
+
+    for (let i = 0; i < size; i++) {
+        console.log("\n");
+        for (let j = 0; j < size; j++) {
+            console.log(matrix[i][j] + " ");
+        }
+    }
+
+
+
+    let KIMARADTSZOBAtmp = matrix[0][Yindex];
+
+    for (let i = 0; i < size; i++) {
+        matrix[i][Yindex] = matrix[i][Yindex];
+    }
+
+
+    matrix[0][Yindex] = KIMARADTSZOBA;
+    KIMARADTSZOBA = KIMARADTSZOBAtmp;
+    for (let i = 0; i < size; i++) {
+        console.log("\n");
+        for (let j = 0; j < size; j++) {
+            console.log(matrix[i][j] + " ");
+        }
+    }
+    console.log("KIMARADTSZOBA " + KIMARADTSZOBA);
+
+
+</script>
+</body>
+</html>
