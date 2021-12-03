@@ -6,45 +6,58 @@
 </head>
 <body>
 <script>
-    console.log("hi");
+    let pushDirection = "up-down"; // or down-up if not specified
+    let Yindex = 1;
+    let flip_value = 999;
+    let flip_tmp;
+
+    function swap(matrix, i, j){
+        let tmp = matrix[i][j];
+        matrix[i][j] = matrix[i - 1][j];
+        matrix[i - 1][j] = tmp;
+    }
+
     let matrix = [
-        [1, 2, 3],
-        [4, 5, 6],
-        [7, 8, 9],
+        [1, 2, 3, 4],
+        [5, 6, 7, 8],
+        [9, 10, 11, 12],
+        [13, 14, 15, 16],
 
     ];
-    //fentről lefele balra
-    let Yindex = 1;
-    let KIMARADTSZOBA = 999;
-    let size = 3;
+/*
+    let matrix = [
+        [1, 6, 3, 4],
+        [5, 10, 7, 8],
+        [9, 14, 11, 12],
+        [13, 999, 15, 16],
 
+    ];
+    */
+
+    // down to up
+
+    let size = matrix.length
+
+
+
+        flip_tmp = matrix[0][Yindex]; //
+        for(let i = 1; i < size; i++) {
+            swap(matrix, i, Yindex);
+        }
+        matrix[size - 1][Yindex] = flip_value;
+
+
+
+    flip_value = flip_tmp;
 
     for (let i = 0; i < size; i++) {
-        console.log("\n");
+        console.log("")
         for (let j = 0; j < size; j++) {
-            console.log(matrix[i][j] + " ");
+            console.log(matrix[i][j]);
         }
     }
 
-
-
-    let KIMARADTSZOBAtmp = matrix[0][Yindex];
-
-    for (let i = 0; i < size; i++) {
-        matrix[i][Yindex] = matrix[i][Yindex];
-    }
-
-
-    matrix[0][Yindex] = KIMARADTSZOBA;
-    KIMARADTSZOBA = KIMARADTSZOBAtmp;
-    for (let i = 0; i < size; i++) {
-        console.log("\n");
-        for (let j = 0; j < size; j++) {
-            console.log(matrix[i][j] + " ");
-        }
-    }
-    console.log("KIMARADTSZOBA " + KIMARADTSZOBA);
-
+    console.log("flip value " + flip_value)
 
 </script>
 </body>

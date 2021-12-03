@@ -49,7 +49,7 @@ const SHAPES = {
     //With player:
     CURVEP: "01P.png",
     TSHAPEP: "02P.png",
-    STRAIGHTP: "02P.png",
+    STRAIGHTP: "03P.png",
 
     //WITH treasure
     CURVET: "01T.png",
@@ -212,68 +212,68 @@ class RoomShape {
 
     getRotation_Degree() {
 
-        let rotation_degree;
-        if (this._shape_type === SHAPES.CURVE) {
-            if (this._isOPEN_LEFT == true && this._isOPEN_UP == true && this._isOPEN_RIGHT == true && this._isOPEN_DOWN == true) {
+        let rotation_degree = 'rotate(0deg)';
+        if (this._shape_type === SHAPES.CURVE || this._shape_type === SHAPES.CURVEP || this._shape_type === SHAPES.CURVET) {
+            if (this._isOPEN_LEFT === true && this._isOPEN_UP === true && this._isOPEN_RIGHT === true && this._isOPEN_DOWN === true) {
                 console.log("error" + SHAPES.CURVE);
                 return rotation_degree = 'rotate(0deg)';
             }
             //DEAULT 0 forgatás
-            if (this._isOPEN_LEFT == false && this._isOPEN_UP == false && this._isOPEN_RIGHT == true && this._isOPEN_DOWN == false) {
+            if (this._isOPEN_LEFT === false && this._isOPEN_UP === false && this._isOPEN_RIGHT === true && this._isOPEN_DOWN === false) {
                 return rotation_degree = 'rotate(0deg)';
             }
             //BALALSÓ 270
-            if (this._isOPEN_LEFT == false && this._isOPEN_UP == true && this._isOPEN_RIGHT == true && this._isOPEN_DOWN == false) {
+            if (this._isOPEN_LEFT === false && this._isOPEN_UP === true && this._isOPEN_RIGHT === true && this._isOPEN_DOWN === false) {
                 return rotation_degree = 'rotate(270deg)';
             }
             //JOBB FELSŐ 90
-            if (this._isOPEN_LEFT == true && this._isOPEN_UP == false && this._isOPEN_RIGHT == false && this._isOPEN_DOWN == true) {
+            if (this._isOPEN_LEFT === true && this._isOPEN_UP === false && this._isOPEN_RIGHT === false && this._isOPEN_DOWN === true) {
                 return rotation_degree = 'rotate(90deg)';
             }
             //JOBB ALSÓ 180
-            if (this._isOPEN_LEFT == true && this._isOPEN_UP == true && this._isOPEN_RIGHT == false && this._isOPEN_DOWN == false) {
+            if (this._isOPEN_LEFT === true && this._isOPEN_UP === true && this._isOPEN_RIGHT === false && this._isOPEN_DOWN === false) {
                 return rotation_degree = 'rotate(180deg)';
             }
         }
 
-        if (this._shape_type === SHAPES.TSHAPE) {
+        if (this._shape_type === SHAPES.TSHAPE || this._shape_type === SHAPES.TSHAPEP || this._shape_type === SHAPES.TSHAPET) {
 
-            if (this._isOPEN_LEFT == true && this._isOPEN_UP == true && this._isOPEN_RIGHT == true && this._isOPEN_DOWN == true) {
+            if (this._isOPEN_LEFT === true && this._isOPEN_UP === true && this._isOPEN_RIGHT === true && this._isOPEN_DOWN === true) {
                 console.log("error" + SHAPES.CURVE);
                 return rotation_degree = 'rotate(0deg)';
             }
-            if (this._isOPEN_LEFT == true && this._isOPEN_UP == false && this._isOPEN_RIGHT == true && this._isOPEN_DOWN == true) {
+            if (this._isOPEN_LEFT === true && this._isOPEN_UP === false && this._isOPEN_RIGHT === true && this._isOPEN_DOWN === true) {
                 return rotation_degree = 'rotate(0deg)';
             }
-            if (this._isOPEN_LEFT == true && this._isOPEN_UP == true && this._isOPEN_RIGHT == true && this._isOPEN_DOWN == false) {
+            if (this._isOPEN_LEFT === true && this._isOPEN_UP === true && this._isOPEN_RIGHT === true && this._isOPEN_DOWN === false) {
                 return rotation_degree = 'rotate(180deg)';
             }
-            if (this._isOPEN_LEFT == false && this._isOPEN_UP == true && this._isOPEN_RIGHT == true && this._isOPEN_DOWN == true) {
+            if (this._isOPEN_LEFT === false && this._isOPEN_UP === true && this._isOPEN_RIGHT === true && this._isOPEN_DOWN === true) {
                 return rotation_degree = 'rotate(270deg)';
             }
-            if (this._isOPEN_LEFT == true && this._isOPEN_UP == true && this._isOPEN_RIGHT == false && this._isOPEN_DOWN == true) {
+            if (this._isOPEN_LEFT === true && this._isOPEN_UP === true && this._isOPEN_RIGHT === false && this._isOPEN_DOWN === true) {
                 return rotation_degree = 'rotate(90deg)';
             }
 
         }
 
-        if (this._shape_type === SHAPES.STRAIGHT) {
+        if (this._shape_type === SHAPES.STRAIGHT || this._shape_type === SHAPES.STRAIGHTP || this._shape_type === SHAPES.STRAIGHTT) {
 
-            if (this._isOPEN_LEFT == true && this._isOPEN_UP == true && this._isOPEN_RIGHT == true && this._isOPEN_DOWN == true) {
+            if (this._isOPEN_LEFT === true && this._isOPEN_UP === true && this._isOPEN_RIGHT === true && this._isOPEN_DOWN === true) {
                 console.log("error" + SHAPES.STRAIGHT);
                 return rotation_degree = 'rotate(0deg)';
             }
-            if (this.isOPEN_LEFT == true && this.isOPEN_UP == true && this._isOPEN_RIGHT == true && this._isOPEN_DOWN == false) {
+            if (this.isOPEN_LEFT === true && this.isOPEN_UP === true && this._isOPEN_RIGHT === true && this._isOPEN_DOWN === false) {
                 console.log("error" + SHAPES.STRAIGHT);
                 return rotation_degree = 'rotate(0deg)';
             }
 
 
-            if (this._isOPEN_LEFT == true && this._isOPEN_UP == false && this._isOPEN_RIGHT == true && this._isOPEN_DOWN == false) {
+            if (this._isOPEN_LEFT === true && this._isOPEN_UP === false && this._isOPEN_RIGHT === true && this._isOPEN_DOWN === false) {
                 return rotation_degree = 'rotate(0deg)';
             }
 
-            if (this._isOPEN_LEFT == false && this._isOPEN_UP == true && this._isOPEN_RIGHT == false && this._isOPEN_DOWN == true) {
+            if (this._isOPEN_LEFT === false && this._isOPEN_UP === true && this._isOPEN_RIGHT === false && this._isOPEN_DOWN === true) {
                 return rotation_degree = 'rotate(90deg)';
             }
 
@@ -714,6 +714,9 @@ const upButton = document.querySelector("#up");
 const rightButton = document.querySelector("#right");
 const downButton = document.querySelector("#down");
 
+const saveButton = document.querySelector("#save");
+const saveDiv = document.querySelector("#is_saved");
+
 
 function startGame() {
 //table.style.display = "block";
@@ -1102,6 +1105,9 @@ function right_click() {
 }
 
 function down_click() {
+
+
+
     if (treasureCOLLECTEDCOUNTER == parseInt(treasurePiece.value)) {
         stepInfoDiv.innerHTML += "A játék vége!";
         startGame();
@@ -1112,6 +1118,39 @@ function down_click() {
     let playerY_coordinate = wherePlayerY_coordinate();
     let playerX_coordinateDOWN = parseInt(parseInt(playerX_coordinate) + 1);
 
+
+
+    console.log(playerX_coordinate + " " + playerY_coordinate);
+    console.log(playerX_coordinate + " " + playerX_coordinateDOWN);
+    console.log("ALAP ELEM INFÓK: Xindex " + playerX_coordinate + "\ty: " + playerY_coordinate +
+        "\nshapetype" + matrix[playerX_coordinate][playerY_coordinate].get_shape_type() + " " +
+        "\nplayer: " + matrix[playerX_coordinate][playerY_coordinate].get_isPLAYER_IN() + " " +
+        "\ntreauser: " + matrix[playerX_coordinate][playerY_coordinate].get_isTREASURE_IN() + " " +
+        "\nconstans: " + matrix[playerX_coordinate][playerY_coordinate].get_isConstant() + " " +
+        "\nbal: " + matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_LEFT() + " " +
+        "\nfel: " + matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_UP() + " " +
+        "\njobb: " + matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_RIGHT() + " " +
+        "\nlenn: " + matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_DOWN() + " " +
+        "\nkep: " + matrix[playerX_coordinate][playerY_coordinate].getImage() + " " +
+        "\nfok: " + matrix[playerX_coordinate][playerY_coordinate].getRotation_Degree() + " ");
+    console.log("----------------------------------------------");
+    console.log("Másik elem infók  " + playerX_coordinateDOWN + "\ty: " + playerY_coordinate +
+        "\nshapetype" + matrix[playerX_coordinateDOWN][playerY_coordinate].get_shape_type() + " " +
+        "\nplayer: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isPLAYER_IN() + " " +
+        "\ntreauser: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isTREASURE_IN() + " " +
+        "\nconstans: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isConstant() + " " +
+        "\nbal: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isOPEN_LEFT() + " " +
+        "\nfel: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isOPEN_UP() + " " +
+        "\njobb: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isOPEN_RIGHT() + " " +
+        "\nlenn: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isOPEN_DOWN() + " " +
+        "\nkep: " + matrix[playerX_coordinateDOWN][playerY_coordinate].getImage() + " " +
+        "\nfok: " + matrix[playerX_coordinateDOWN][playerY_coordinate].getRotation_Degree() + " ");
+
+
+
+    console.log(playerX_coordinate + " " + playerY_coordinate);
+    console.log(playerX_coordinateDOWN + " " + playerX_coordinateDOWN);
+
     if (playerX_coordinateDOWN > 7) {
         stepInfoDiv.innerHTML = "";
         stepInfoDiv.innerHTML += "A játékos nem tud le lépni (pálya széle)";
@@ -1120,13 +1159,13 @@ function down_click() {
         stepInfoDiv.innerHTML = "";
         stepInfoDiv.innerHTML += "A játékos nem tud le lépni (a másik alakzat lentőrl zárt)";
     }
-    if (matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_UP() === false) {
+    if (matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_DOWN() === false) {
         stepInfoDiv.innerHTML = "";
         stepInfoDiv.innerHTML += "A játékos nem tud le lépni a saját alakzata miatt.";
     }
 
 
-    if (matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_UP() === true && matrix[playerX_coordinateDOWN][playerY_coordinate].get_isOPEN_DOWN() === true) {
+    if (matrix[playerX_coordinateDOWN][playerY_coordinate].get_isOPEN_UP() === true && matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_DOWN() === true) {
 
 
         if (matrix[playerX_coordinateDOWN][playerY_coordinate].get_isTREASURE_IN() === true) {
@@ -1161,7 +1200,7 @@ function down_click() {
             //console.log("a: " + player_selector + "\tb: " + cellquery_player_selector + "\nc: " + matrix[playerX_coordinate][playerY_coordinate].getImage());
             cellquery_player_selector.setAttribute('src', matrix[playerX_coordinate][playerY_coordinate].getImage());
 
-            //sett player left
+            //sett player down
             matrix[playerX_coordinateDOWN][playerY_coordinate].set_isPLAYER_IN(true);
             let selectors_left_step = "#ROOM" + playerX_coordinateDOWN + playerY_coordinate + "> img";
             let cellquery_selectors_left_step = document.querySelector(selectors_left_step);
@@ -1179,6 +1218,12 @@ function down_click() {
 
 ///EVEENT LISTENERS
 
+function swap(matrix, i, j) {
+    let tmp = matrix[i][j];
+    matrix[i][j] = matrix[i - 1][j];
+    matrix[i - 1][j] = tmp;
+}
+
 
 startButton.addEventListener('click', startGame);
 descriptionButton.addEventListener('click', showDescription);
@@ -1187,6 +1232,18 @@ upButton.addEventListener('click', up_click);
 rightButton.addEventListener('click', right_click);
 downButton.addEventListener('click', down_click);
 
+function save() {
+
+
+
+    const fs = require('fs');
+
+    let fileContent = 'I can write';
+    fs.writeFileSync('message.txt', fileContent);
+
+}
+
+saveButton.addEventListener('click', save);
 
 function gameon() {
 
@@ -1201,31 +1258,32 @@ function gameon() {
             //console.log(cell.innerHTML, row.rowIndex, cell.cellIndex, cell.id);
             let Xindex = row.rowIndex + 1;
             let Yindex = cell.cellIndex + 1;
-            /*  console.log("ALAP ELEM INFÓK: Xindex " + Xindex + "\ty: " + Yindex +
-                  "\nshapetype" + matrix[Xindex][Yindex].get_shape_type() + " " +
-                  "\nplayer: " + matrix[Xindex][Yindex].get_isPLAYER_IN() + " " +
-                  "\ntreauser: " + matrix[Xindex][Yindex].get_isTREASURE_IN() + " " +
-                  "\nconstans: " + matrix[Xindex][Yindex].get_isConstant() + " " +
-                  "\nbal: " + matrix[Xindex][Yindex].get_isOPEN_LEFT() + " " +
-                  "\nfel: " + matrix[Xindex][Yindex].get_isOPEN_UP() + " " +
-                  "\njobb: " + matrix[Xindex][Yindex].get_isOPEN_RIGHT() + " " +
-                  "\nlenn: " + matrix[Xindex][Yindex].get_isOPEN_DOWN() + " " +
-                  "\nkep: " + matrix[Xindex][Yindex].getImage() + " " +
-                  "\nfok: " + matrix[Xindex][Yindex].getRotation_Degree() + " ");
-              console.log("----------------------------------------------");
-              console.log("Kimaradtszoba ELEM INFÓK: Xindex " + Xindex + "\ty: " + Yindex +
-                  "\nshapetype" + KIMARADTSZOBA.get_shape_type() + " " +
-                  "\nplayer: " + KIMARADTSZOBA.get_isPLAYER_IN() + " " +
-                  "\ntreauser: " + KIMARADTSZOBA.get_isTREASURE_IN() + " " +
-                  "\nconstans: " + KIMARADTSZOBA.get_isConstant() + " " +
-                  "\nbal: " + KIMARADTSZOBA.get_isOPEN_LEFT() + " " +
-                  "\nfel: " + KIMARADTSZOBA.get_isOPEN_UP() + " " +
-                  "\njobb: " + KIMARADTSZOBA.get_isOPEN_RIGHT() + " " +
-                  "\nlenn: " + KIMARADTSZOBA.get_isOPEN_DOWN() + " " +
-                  "\nkep: " + KIMARADTSZOBA.getImage() + " " +
-                  "\nfok: " + KIMARADTSZOBA.getRotation_Degree() + " ");
-              console.log("----------------------------------------------");
-              */
+            /*
+                console.log("ALAP ELEM INFÓK: Xindex " + Xindex + "\ty: " + Yindex +
+                    "\nshapetype" + matrix[Xindex][Yindex].get_shape_type() + " " +
+                    "\nplayer: " + matrix[Xindex][Yindex].get_isPLAYER_IN() + " " +
+                    "\ntreauser: " + matrix[Xindex][Yindex].get_isTREASURE_IN() + " " +
+                    "\nconstans: " + matrix[Xindex][Yindex].get_isConstant() + " " +
+                    "\nbal: " + matrix[Xindex][Yindex].get_isOPEN_LEFT() + " " +
+                    "\nfel: " + matrix[Xindex][Yindex].get_isOPEN_UP() + " " +
+                    "\njobb: " + matrix[Xindex][Yindex].get_isOPEN_RIGHT() + " " +
+                    "\nlenn: " + matrix[Xindex][Yindex].get_isOPEN_DOWN() + " " +
+                    "\nkep: " + matrix[Xindex][Yindex].getImage() + " " +
+                    "\nfok: " + matrix[Xindex][Yindex].getRotation_Degree() + " ");
+                console.log("----------------------------------------------");
+                console.log("Kimaradtszoba ELEM INFÓK: Xindex " + Xindex + "\ty: " + Yindex +
+                    "\nshapetype" + KIMARADTSZOBA.get_shape_type() + " " +
+                    "\nplayer: " + KIMARADTSZOBA.get_isPLAYER_IN() + " " +
+                    "\ntreauser: " + KIMARADTSZOBA.get_isTREASURE_IN() + " " +
+                    "\nconstans: " + KIMARADTSZOBA.get_isConstant() + " " +
+                    "\nbal: " + KIMARADTSZOBA.get_isOPEN_LEFT() + " " +
+                    "\nfel: " + KIMARADTSZOBA.get_isOPEN_UP() + " " +
+                    "\njobb: " + KIMARADTSZOBA.get_isOPEN_RIGHT() + " " +
+                    "\nlenn: " + KIMARADTSZOBA.get_isOPEN_DOWN() + " " +
+                    "\nkep: " + KIMARADTSZOBA.getImage() + " " +
+                    "\nfok: " + KIMARADTSZOBA.getRotation_Degree() + " ");
+                console.log("----------------------------------------------");
+                */
             //KIMARADT ELEM BEILLESZTÉSE:
 
 
@@ -1257,7 +1315,6 @@ function gameon() {
                 }
 
 
-
                 for (let i = 1; i < table_size + 1; i++) {
                     // console.log(matrix[i][j].get_shape_type());
                     let selectors = "#ROOM" + Xindex + i + "> img";
@@ -1284,7 +1341,7 @@ function gameon() {
             if (Yindex === 7 && (Xindex === 2 || Xindex === 4 || Xindex === 6)) {
 
                 let KIMARADTSZOBAtmp = matrix[Xindex][1];
-                for (let i = 1; i < table_size+1; i++) {
+                for (let i = 1; i < table_size + 1; i++) {
                     matrix[Xindex][i] = matrix[Xindex][i + 1];
                 }
 
@@ -1302,7 +1359,6 @@ function gameon() {
                 }
 
 
-
                 for (let i = 1; i < table_size + 1; i++) {
                     // console.log(matrix[i][j].get_shape_type());
                     let selectors = "#ROOM" + Xindex + i + "> img";
@@ -1311,7 +1367,6 @@ function gameon() {
                     cellquery.setAttribute('style', matrix[Xindex][i].getRotation_Degree());
 
                 }
-
 
 
                 roomDiv.innerHTML = "";
@@ -1324,6 +1379,97 @@ function gameon() {
                 shapeleftDiv.appendChild(img);
             } else {
                 roomDiv.innerHTML = "A páratlan sor nem cserélhető!";
+            }
+
+            //Up to down fentről le
+            if (Xindex === 1 && Yindex === 2 || Xindex === 1 && Yindex === 4 || Xindex === 1 && Yindex === 6) {
+                let KIMARADTSZOBAtmp = matrix[1][Yindex];
+                for (let i = table_size; i > 1; i--) {
+                    matrix[i][Yindex] = matrix[i - 1][Yindex];
+                }
+
+                matrix[1][Yindex] = KIMARADTSZOBA;
+                KIMARADTSZOBA = KIMARADTSZOBAtmp;
+                //Ha player lenne a kimaradtszobába
+                if (KIMARADTSZOBA.get_isPLAYER_IN(true)) {
+                    matrix[1][Yindex].set_isPLAYER_IN(true);
+                    KIMARADTSZOBA.set_isPLAYER_IN(false);
+                }
+                //ha kincs lenne
+                if (KIMARADTSZOBA.get_isTREASURE_IN(true)) {
+                    matrix[1][Yindex].set_isTREASURE_IN(true);
+                    KIMARADTSZOBA.set_isTREASURE_IN(false);
+                }
+
+
+                for (let i = 1; i < table_size + 1; i++) {
+
+                    let selectors = "#ROOM" + i + Yindex + "> img";
+                    let cellquery = document.querySelector(selectors);
+                    cellquery.setAttribute('src', matrix[i][Yindex].getImage());
+                    cellquery.setAttribute('style', matrix[i][Yindex].getRotation_Degree());
+
+                }
+
+                roomDiv.innerHTML = "";
+                roomDiv.innerHTML = "A fentről le csere megtörtént";
+                shapeleftDiv.innerHTML = "";
+                //shapeleftDiv.innerHTML.src = KIMARADTSZOBA.getImage();
+                let img = document.createElement("img");
+                img.setAttribute('src', KIMARADTSZOBA.getImage());
+                img.setAttribute('style', KIMARADTSZOBA.getRotation_Degree());
+                shapeleftDiv.appendChild(img);
+
+
+            } else if (Xindex === 1 && Yindex === 1 || Xindex === 1 && Yindex === 3 || Xindex === 1 && Yindex === 5 || Xindex === 1 && Yindex === 7) {
+                roomDiv.innerHTML = "Páratlan oszlop nem cserélhető(Fentről le)"
+            }
+
+
+            //Lentről fel
+            if (Xindex === 7 && (Yindex === 2 || Yindex === 4 || Yindex === 6)) {
+                let KIMARADTSZOBAtmp = matrix[1][Yindex];
+                for (let i = 1; i < table_size; i++) {
+                    matrix[i][Yindex] = matrix[i + 1][Yindex];
+                }
+
+                matrix[table_size - 1][Yindex] = KIMARADTSZOBA;
+
+                matrix[Xindex][1] = KIMARADTSZOBA;
+                KIMARADTSZOBA = KIMARADTSZOBAtmp;
+                //Ha player lenne a kimaradtszobába
+                if (KIMARADTSZOBA.get_isPLAYER_IN(true)) {
+                    matrix[table_size][Yindex].set_isPLAYER_IN(true);
+                    KIMARADTSZOBA.set_isPLAYER_IN(false);
+                }
+                //ha kincs lenne
+                if (KIMARADTSZOBA.get_isTREASURE_IN(true)) {
+                    matrix[table_size][Yindex].set_isTREASURE_IN(true);
+                    KIMARADTSZOBA.set_isTREASURE_IN(false);
+                }
+
+
+                for (let i = 1; i < table_size + 1; i++) {
+
+                    let selectors = "#ROOM" + i + Yindex + "> img";
+                    let cellquery = document.querySelector(selectors);
+                    cellquery.setAttribute('src', matrix[i][Yindex].getImage());
+                    cellquery.setAttribute('style', matrix[i][Yindex].getRotation_Degree());
+
+                }
+
+                roomDiv.innerHTML = "";
+                roomDiv.innerHTML = "Lenről fel csere megtörtént";
+                shapeleftDiv.innerHTML = "";
+                //shapeleftDiv.innerHTML.src = KIMARADTSZOBA.getImage();
+                let img = document.createElement("img");
+                img.setAttribute('src', KIMARADTSZOBA.getImage());
+                img.setAttribute('style', KIMARADTSZOBA.getRotation_Degree());
+                shapeleftDiv.appendChild(img);
+
+
+            } else if (Xindex === 7 && (Yindex === 1 || Yindex === 3 || Yindex === 5 || Yindex === 7)) {
+                roomDiv.innerHTML = "Páratlan oszlop nem cserélhető(Lentről fel)"
             }
 
         }

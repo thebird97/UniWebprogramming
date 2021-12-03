@@ -95,6 +95,22 @@ body {
     box-shadow: 0 9px #999;
 }
 
+
+#save {
+    display: inline-block;
+    padding: 5px 5px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #f309e6;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+
 #start:hover {
     background-color: #3e8e41
 }
