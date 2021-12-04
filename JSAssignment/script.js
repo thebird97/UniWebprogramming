@@ -674,6 +674,8 @@ function generate_treasure() {
 
 function spawn_player() {
 ///Játéktér: A rácsra fel van helyezve legalább 1 játékos figurája (0,5 pont)
+//Játéktér: a figurák a sarkokban megjelennek (0,5 pont)
+
 
 
     for (let i = 0; i < parseInt(playerPiece.value); i++) {
@@ -684,6 +686,9 @@ function spawn_player() {
             let playerY = Math.floor(Math.random() * 7) + 1;
 
         }
+
+
+
 
         matrix[playerX][playerY].set_isPLAYER_IN(true);
         let selectors = "#ROOM" + playerX + playerY + "> img";
@@ -812,7 +817,7 @@ function left_click() {
         stepInfoDiv.innerHTML = "";
         stepInfoDiv.innerHTML += "A játékos nem tud balra lépni (a másik alakzat jobbról zárt)";
     }
-    if (matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_LEFT() === false) {
+    else if(matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_LEFT() === false) {
         stepInfoDiv.innerHTML = "";
         stepInfoDiv.innerHTML += "A játékos nem tud balra lépni a saját alakzata miatt.";
     }
@@ -841,6 +846,8 @@ function left_click() {
             let cellquery_player_selector = document.querySelector(player_selector);
             console.log("a: " + player_selector + "\tb: " + cellquery_player_selector + "\nc: " + matrix[playerX_coordinate][playerY_coordinate].getImage());
             cellquery_player_selector.setAttribute('src', matrix[playerX_coordinate][playerY_coordinate].getImage());
+            cellquery_player_selector.setAttribute('style', matrix[playerX_coordinate][playerY_coordinate].getRotation_Degree());
+
 
             //KINCS BEGYŰJTÉSE ÉS SIMA PLAYER
             matrix[playerX_coordinate][playerY_coordinateLEFT].set_isPLAYER_IN(true);
@@ -867,6 +874,7 @@ function left_click() {
             let cellquery_player_selector = document.querySelector(player_selector);
             console.log("a: " + player_selector + "\tb: " + cellquery_player_selector + "\nc: " + matrix[playerX_coordinate][playerY_coordinate].getImage());
             cellquery_player_selector.setAttribute('src', matrix[playerX_coordinate][playerY_coordinate].getImage());
+            cellquery_player_selector.setAttribute('style', matrix[playerX_coordinate][playerY_coordinate].getRotation_Degree());
 
             //sett player left
             matrix[playerX_coordinate][playerY_coordinateLEFT].set_isPLAYER_IN(true);
@@ -1153,14 +1161,15 @@ function down_click() {
         stepInfoDiv.innerHTML = "";
         stepInfoDiv.innerHTML += "A játékos nem tud le lépni (pálya széle)";
         return 0;
-    } else if (matrix[playerX_coordinateDOWN][playerY_coordinate].get_isOPEN_DOWN() === false) {
+    } else if (matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_DOWN() === false) {
         stepInfoDiv.innerHTML = "";
-        stepInfoDiv.innerHTML += "A játékos nem tud le lépni (a másik alakzat lentőrl zárt)";
+        stepInfoDiv.innerHTML += "A játékos nem tud le lépni a saját alakzata miatt. (lentről zárt az én alakzatom";
     }
-    if (matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_DOWN() === false) {
+    else if (matrix[playerX_coordinateDOWN][playerY_coordinate].get_isOPEN_UP() === false) {
         stepInfoDiv.innerHTML = "";
-        stepInfoDiv.innerHTML += "A játékos nem tud le lépni a saját alakzata miatt.";
+        stepInfoDiv.innerHTML += "A játékos nem tud le lépni (a másik alakzat fentről zárt)";
     }
+
 
 
     if (matrix[playerX_coordinateDOWN][playerY_coordinate].get_isOPEN_UP() === true && matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_DOWN() === true) {
@@ -1172,6 +1181,7 @@ function down_click() {
             let player_selector = "#ROOM" + playerX_coordinate + playerY_coordinate + "> img";
             let cellquery_player_selector = document.querySelector(player_selector);
             cellquery_player_selector.setAttribute('src', matrix[playerX_coordinate][playerY_coordinate].getImage());
+            cellquery_player_selector.setAttribute('style', matrix[playerX_coordinate][playerY_coordinate].getRotation_Degree());
 
             //KINCS BEGYŰJTÉSE ÉS SIMA PLAYER
             //kincs eltűntetése
@@ -1197,6 +1207,7 @@ function down_click() {
             let cellquery_player_selector = document.querySelector(player_selector);
             //console.log("a: " + player_selector + "\tb: " + cellquery_player_selector + "\nc: " + matrix[playerX_coordinate][playerY_coordinate].getImage());
             cellquery_player_selector.setAttribute('src', matrix[playerX_coordinate][playerY_coordinate].getImage());
+            cellquery_player_selector.setAttribute('style', matrix[playerX_coordinate][playerY_coordinate].getRotation_Degree());
 
             //sett player down
             matrix[playerX_coordinateDOWN][playerY_coordinate].set_isPLAYER_IN(true);
@@ -1397,7 +1408,7 @@ function gameon() {
 
             //Up to down fentről le
             if (Xindex === 1 && Yindex === 2 || Xindex === 1 && Yindex === 4 || Xindex === 1 && Yindex === 6) {
-                let KIMARADTSZOBAtmp = matrix[1][Yindex];
+                let KIMARADTSZOBAtmp = matrix[table_size][Yindex]; //lenti szoba
                 for (let i = table_size; i > 1; i--) {
                     matrix[i][Yindex] = matrix[i - 1][Yindex];
                 }
@@ -1442,7 +1453,7 @@ function gameon() {
 
             //Lentről fel
             if (Xindex === 7 && (Yindex === 2 || Yindex === 4 || Yindex === 6)) {
-                let KIMARADTSZOBAtmp = matrix[1][Yindex];
+                let KIMARADTSZOBAtmp = matrix[1][Yindex]; //első elem
                 for (let i = 1; i < table_size; i++) {
                     matrix[i][Yindex] = matrix[i + 1][Yindex];
                 }
