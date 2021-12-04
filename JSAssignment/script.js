@@ -715,11 +715,12 @@ const rightButton = document.querySelector("#right");
 const downButton = document.querySelector("#down");
 
 const saveButton = document.querySelector("#save");
-const saveDiv = document.querySelector("#is_saved");
+const issavedButton = document.querySelector("#is_saved");
 
 
 function startGame() {
 //table.style.display = "block";
+    is_save();
     gametablediv.innerHTML = "";
 
     curve_counter = 0;
@@ -1107,7 +1108,6 @@ function right_click() {
 function down_click() {
 
 
-
     if (treasureCOLLECTEDCOUNTER == parseInt(treasurePiece.value)) {
         stepInfoDiv.innerHTML += "A játék vége!";
         startGame();
@@ -1117,7 +1117,6 @@ function down_click() {
     let playerX_coordinate = wherePlayerX_coordinate();
     let playerY_coordinate = wherePlayerY_coordinate();
     let playerX_coordinateDOWN = parseInt(parseInt(playerX_coordinate) + 1);
-
 
 
     console.log(playerX_coordinate + " " + playerY_coordinate);
@@ -1145,7 +1144,6 @@ function down_click() {
         "\nlenn: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isOPEN_DOWN() + " " +
         "\nkep: " + matrix[playerX_coordinateDOWN][playerY_coordinate].getImage() + " " +
         "\nfok: " + matrix[playerX_coordinateDOWN][playerY_coordinate].getRotation_Degree() + " ");
-
 
 
     console.log(playerX_coordinate + " " + playerY_coordinate);
@@ -1231,19 +1229,35 @@ leftButton.addEventListener('click', left_click);
 upButton.addEventListener('click', up_click);
 rightButton.addEventListener('click', right_click);
 downButton.addEventListener('click', down_click);
+saveButton.addEventListener('click', save);
 
-function save() {
+function is_save() {
 
+    let localstorage = window.localStorage;
+    if (localstorage.getItem('matrix') == null) {
 
+        issavedButton.innerText = 'Nincs mentett állapot!';
+        return false;
 
-    const fs = require('fs');
-
-    let fileContent = 'I can write';
-    fs.writeFileSync('message.txt', fileContent);
+    } else {
+        issavedButton.innerText = 'Van mentett állapot! (Kattints ide a megtekintéshez)';
+        const important = document.querySelector("#mywrite");
+        important.innerHTML = localstorage.getItem('matrix');
+        return true;
+    }
 
 }
 
-saveButton.addEventListener('click', save);
+function save() {
+
+    let localstorage = window.localStorage;
+    localStorage.removeItem('matrix');
+    localstorage.setItem('matrix', JSON.stringify(matrix));
+    is_save();
+
+
+}
+
 
 function gameon() {
 

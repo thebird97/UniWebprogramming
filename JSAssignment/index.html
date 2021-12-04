@@ -29,38 +29,60 @@
 <br>
 <br>
 <br>
-<input type="button"  id="start"  value="Új játék">
+<input type="button" id="start" value="Új játék">
 <br>
 <br>
-<input type="button"  id="save"  value="Játék mentése">
+<input type="button" id="save" value="Aktuális állapot mentése">
 <br><br>
-<div id="is_saved">Van-e mentett állapot?</div>
+
+<button type="button" class="collapsible" id="is_saved">Van-e mentett állapot?</button>
+<div class="content">
+    <p id="mywrite"></p>
+</div>
+
+
 <br><br>
 <h4>Az 1.-es játékos léptetésehez nyomd le a gombot:</h4>
-<input type="button" id="left"  class="arrow left" value="BAL">
+<input type="button" id="left" class="arrow left" value="BAL">
 <input type="button" id="up" class="arrow up" value="FEL">
 <input type="button" id="right" class="arrow right" value="JOBB">
 <input type="button" id="down" class="arrow down" value="LE">
 <br>
 <br>
-<div id="stepinfo">A játékos lépése: </div>
+<div id="stepinfo">A játékos lépése:</div>
 <br>
-<div id="treauserecount">A begyújtőtt kincsek száma: </div>
+<div id="treauserecount">A begyújtőtt kincsek száma:</div>
 <br>
 <br>
- <h4>Kattints a táblára a kimaradt szoba berakásához:</h4>
+<h4>Kattints a táblára a kimaradt szoba berakásához:</h4>
 <div id="roominfo"></div>
 <div class="gametable">
 
 </div>
 <br>
 <br>
-<h3>Az kimaradt szoba:  </h3>
+<h3>Az kimaradt szoba: </h3>
 <div class="shapetopaste" id="shapetopaste">
 
 </div>
 
 
 <script src="script.js"></script>
+<script>
+    let coll = document.getElementsByClassName("collapsible");
+
+
+    for (let i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            let content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+</script>
 </body>
 </html>
