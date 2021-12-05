@@ -6,3 +6,5 @@ Sources can be found here http://webprogramozas.inf.elte.hu/
 Code test:
 
 https://madarbalin.web.elte.hu/WebProgramming/
+
+https://thebird97.github.io/UniWebprogramming/
