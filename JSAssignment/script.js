@@ -1,4 +1,4 @@
-function readTextFile(file) {
+/*function readTextFile(file) {
     let rawFile = new XMLHttpRequest();
     rawFile.open("GET", file, false);
     let allText;
@@ -15,19 +15,17 @@ function readTextFile(file) {
     return allText;
 }
 
-
+*/
 /*
 Képek
 01 kanyar 2db nyílás
 02 T 3 db nyílás
 03 egyenes 2db nyílás
-
  */
 /*
 13 db egyenes
 15 db kanyar
 6 db hármas elágazás
-
  */
 const MAX_CURVE_NUMBER = 15;
 const MAX_T_NUMBER = 6;
@@ -634,24 +632,18 @@ function generate_treasure() {
         cells.forEach(function (cell) {
         //    console.log(cell.getAttributeNames());
         })
-
      */
     //3 kincs felhelyzése
     /*
     for (let i = 0; i <= 3; i++) {
         let treasureX = Math.floor(Math.random() * 6) + 2;
         let treasureY = Math.floor(Math.random() * 6) + 2;
-
         matrix[treasureX][treasureY].set_isTREASURE_IN(true);
         let selectors = "#ROOM" + treasureX + treasureY + "> img";
-
         let cellquery = document.querySelector(selectors);
         console.log(cellquery);
         cellquery.setAttribute('src', matrix[treasureX][treasureY].getImage());
-
-
     }
-
      */
 
 //treasurepice db  kincs felhelyzése
@@ -700,7 +692,7 @@ function spawn_player() {
 
 //////////CONSTANTS:
 
-const text = readTextFile("description.txt");
+//const text = readTextFile("description.txt");
 const startButton = document.querySelector("#start");
 const descriptionButton = document.querySelector("#description");
 const gametablediv = document.querySelector(".gametable");
@@ -755,6 +747,68 @@ function startGame() {
 
 
 function showDescription() {
+
+    let text = "<p>Nekeresdországban Nevenincs királynak egyik szeme sír, a másik nevet. <br>\n" +
+        "Nevet, mert tündérszép lányának kérője akadt, és sír, mert a kiváló kérőből nem egy, hanem több is van. <br>\n" +
+        "Hát most hogyan döntse el, melyiknek adja lánya kezét és fele királyságát? Gondolja kikéri udvari tanácsosa, Furfang véleményét. <br>\n" +
+        " Az udvari tanácsos nevéhez illő ötlettel áll elő: állítsák próba elé a kérőket, s aki a legrátermettebbnek bizonyul, az nyerje el a szépséges királylány kezét. <br>\n" +
+        "  Van a várnak egy elvarázsolt katakombája, ahol a szobák helye folyamatosan változtatható. Ebben rejtenek el kincseket, s az a kérő nyeri el a királylány kezét, aki a leghamarabb szedi össze\n" +
+        "  a rábízott kincseket.\n" +
+        "  </p>\n" +
+        "<br>\n" +
+        "<h3>A játék leírása</h3>\n" +
+        "<br>\n" +
+        "<p>\n" +
+        "A katakomba szobáit egy 7x7-es négyzetrács cellái jelképezik. <br>\n" +
+        "Minden szoba esetén adott, hogy mely falain van ajtó. Ha két szomszédos szoba érintkező falán egy-egy ajtó van, akkor át lehet menni egyik szobából a másikba. <br>\n" +
+        " A négyzetrács páros sorait és oszlopait el lehet tolni, a többi szoba végig rögzített a játék során. <br>\n" +
+        " Az eltolásokkal az ajtókon keresztül utak nyílnak a szobák között, így lehet eljutni a kincsekhez. <br>\n" +
+        " Mindegyik kérő arra törekszik, hogy a katakomba szobáinak ötletes eltolásával eljusson a kincsekhez. <br>\n" +
+        "  Aki elsőként találja meg mindahányat és kiindulópontjára sikeresen visszaérkezik az a nyertes.\n" +
+        " </p>\n" +
+        " <br>\n" +
+        " <p>\n" +
+        "A játék elején a szobákat véletlen sorrendben és véletlen irányban kirakjuk a játéktábla szabad mezőire. <br>\n" +
+        "A szobák közül az egyik mindenképpen fölösleges marad. <br>\n" +
+        " A játék folyamán majd mindig az éppen kimaradó szobát használjuk a többi szoba elcsúsztatására <br>.\n" +
+        " A játékban legfeljebb 24 kincset kell megtalálni. Ezeket véletlen sorrendben felrakjuk a táblára úgy, <br>\n" +
+        " hogy egy mezőn csak egy kincs lehet, és a sarokba nem rakhatunk, majd az ezeket jelző kártyákat összekeverjük, <br>\n" +
+        " és egyenlő számban szétosztjuk a játékosok között, felfedve mindig a legfelső kártyát. A játékosokat jelző figurákat a tábla külön sarkaiba helyezzük.\n" +
+        "  </p>\n" +
+        "   <br>\n" +
+        "\n" +
+        "    <p>\n" +
+        "    A játék során minden játékosnak a kincsei közül azt kell megszereznie, amit az aktuálisan legfelső, mindenki által látható kincskártya mutat. <br>\n" +
+        "     Arra a mezőre kell eljutni. Ahhoz, hogy a célt elérje, a játékosnak először a katakombát kell átalakítania a kimaradt szoba becsúsztatásával, és <br>\n" +
+        "    lépnie mindig csak ez után szabad a figurájával.\n" +
+        "    </p>\n" +
+        "\n" +
+        "       <br>\n" +
+        "      <p>\n" +
+        "      A katakomba átalakítása a következőképpen történik: <br>\n" +
+        "       A játékos a kimaradt szobát (tetszőlegesen elforgatva) valamelyik oldalról becsúsztathatja <br>\n" +
+        "       a játéktábla területére egy szabadon mozgó sor vagy oszlop szélén, aminek következtében az átellenes oldalon kiesik egy másik szoba. <br>\n" +
+        "        A tábla szélén nyilak jelzik azokat a helyeket, ahol a szobát be lehet csúsztatni. <br>\n" +
+        "        A szoba bárhol betolható, kivétel ott, ahol az imént kilökődött. Nem szabad tehát az előző játékos lépését rögtön „visszacsinálni\". <br>\n" +
+        "         Ha a szobák eltolása során a szobával együtt egy figura is kitolódnék – akár másé, akár a miénk -, akkor ezt a figurát az ellenkező oldalról imént becsúsztatott szobába kell helyezni. <br>\n" +
+        "      </p>\n" +
+        "\n" +
+        "         <br>\n" +
+        "        <p>\n" +
+        "        A szobák eltolását követi a játékos lépése a figurával. A katakomba minden olyan pontjáig el lehet jutni, amelyet a kiindulóponttal folyamatos járatvonal köt össze. <br>\n" +
+        "         Az ilyen járatokban tehát olyan messzire mehetünk el, amilyen messzire csak akarunk, vagyis nem számít, hogy hány szobán lépkedünk végig. Nem kötelező lépni. <br>\n" +
+        "          Figuránkat akár ott is hagyhatjuk, ahol éppen van. Egy mezőn több figura is állhat: a figurák nem ütik ki egymást.  <br>\n" +
+        "          Ha valaki nem tud rögtön céljáig eljutni, akkor figurájával addig a pontig célszerű elmennie, ahol feltehetőleg jó helyzetben várhatja következő lépést.  <br>\n" +
+        "          Ha valaki elérte a felfedett kincskártya által megjelölt célt, akkor felfedi a következőt, és most ehhez a célhoz igyekszik eljutni, stb. <br>\n" +
+        "        </p>\n" +
+        "\n" +
+        "\n" +
+        "           <br>\n" +
+        "          <p>\n" +
+        "          A játék akkor ér véget, ha egy játékos az összes kincskártyájához tartozó kincset megszerezte, és visszavezette a figuráját arra mezőre, ahonnan elindult. <br>\n" +
+        "          Az a győztes, aki valamennyi kincsét megtalálta és figuráját elsőként juttatta vissza a kiindulópontra.\n" +
+        "          </p>";
+
     const descriptionDiv = document.querySelector(".description_div");
     if (descriptionDiv.style.display === "none") {
         descriptionDiv.style.display = "block";
