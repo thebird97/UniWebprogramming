@@ -9,6 +9,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="728cf129-6202-4e6f-a2e0-9ebb1b88f7a9" name="ftp.thebird97.com" url="http://ftp.thebird97.com">
+        <fileTransfer rootFolder="/www/webprog" host="ftp.thebird97.com" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>
