@@ -1084,35 +1084,36 @@ function up_click() {
             stepInfoDiv.innerHTML = "";
             stepInfoDiv.innerHTML += "A játékos fel lépett";
         }
+        console.log("------------------------------------------")
+        console.log("ALAP ELEM FEL LÉPÉS VÁLTOZTATÁS UTÁN:" + matrix[playerX_coordinate][playerY_coordinate].get_shape_type() + " " +
+            matrix[playerX_coordinate][playerY_coordinate].get_isPLAYER_IN() + " " +
+            matrix[playerX_coordinate][playerY_coordinate].get_isTREASURE_IN() + " " +
+            matrix[playerX_coordinate][playerY_coordinate].get_isConstant() + " " +
+            matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_LEFT() + " " +
+            matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_UP() + " " +
+            matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_RIGHT() + " " +
+            matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_DOWN() + " " +
+            matrix[playerX_coordinate][playerY_coordinate].getImage() + " " +
+            matrix[playerX_coordinate][playerY_coordinate].getRotation_Degree() + " ");
+
+
+        console.log("------------------------------------------")
+        console.log("FENTI ELEM LÉPÉS VÁLTOZTATÁS UTÁN:" + matrix[playerX_coordinateUP][playerY_coordinate].get_shape_type() + " " +
+            matrix[playerX_coordinateUP][playerY_coordinate].get_isPLAYER_IN() + " " +
+            matrix[playerX_coordinateUP][playerY_coordinate].get_isTREASURE_IN() + " " +
+            matrix[playerX_coordinateUP][playerY_coordinate].get_isConstant() + " " +
+            matrix[playerX_coordinateUP][playerY_coordinate].get_isOPEN_LEFT() + " " +
+            matrix[playerX_coordinateUP][playerY_coordinate].get_isOPEN_UP() + " " +
+            matrix[playerX_coordinateUP][playerY_coordinate].get_isOPEN_RIGHT() + " " +
+            matrix[playerX_coordinateUP][playerY_coordinate].get_isOPEN_DOWN() + " " +
+            matrix[playerX_coordinateUP][playerY_coordinate].getImage() + " " +
+            matrix[playerX_coordinateUP][playerY_coordinate].getRotation_Degree() + " ");
+        console.log("------------------------------------------")
 
 
     }
 
-    console.log("------------------------------------------")
-    console.log("ALAP ELEM FEL LÉPÉS VÁLTOZTATÁS UTÁN:" + matrix[playerX_coordinate][playerY_coordinate].get_shape_type() + " " +
-        matrix[playerX_coordinate][playerY_coordinate].get_isPLAYER_IN() + " " +
-        matrix[playerX_coordinate][playerY_coordinate].get_isTREASURE_IN() + " " +
-        matrix[playerX_coordinate][playerY_coordinate].get_isConstant() + " " +
-        matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_LEFT() + " " +
-        matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_UP() + " " +
-        matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_RIGHT() + " " +
-        matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_DOWN() + " " +
-        matrix[playerX_coordinate][playerY_coordinate].getImage() + " " +
-        matrix[playerX_coordinate][playerY_coordinate].getRotation_Degree() + " ");
 
-
-    console.log("------------------------------------------")
-    console.log("FENTI ELEM LÉPÉS VÁLTOZTATÁS UTÁN:" + matrix[playerX_coordinateUP][playerY_coordinate].get_shape_type() + " " +
-        matrix[playerX_coordinateUP][playerY_coordinate].get_isPLAYER_IN() + " " +
-        matrix[playerX_coordinateUP][playerY_coordinate].get_isTREASURE_IN() + " " +
-        matrix[playerX_coordinateUP][playerY_coordinate].get_isConstant() + " " +
-        matrix[playerX_coordinateUP][playerY_coordinate].get_isOPEN_LEFT() + " " +
-        matrix[playerX_coordinateUP][playerY_coordinate].get_isOPEN_UP() + " " +
-        matrix[playerX_coordinateUP][playerY_coordinate].get_isOPEN_RIGHT() + " " +
-        matrix[playerX_coordinateUP][playerY_coordinate].get_isOPEN_DOWN() + " " +
-        matrix[playerX_coordinateUP][playerY_coordinate].getImage() + " " +
-        matrix[playerX_coordinateUP][playerY_coordinate].getRotation_Degree() + " ");
-    console.log("------------------------------------------")
 }
 
 function right_click() {
@@ -1247,31 +1248,6 @@ function down_click() {
     let playerX_coordinateDOWN = parseInt(parseInt(playerX_coordinate) + 1);
 
 
-    console.log(playerX_coordinate + " " + playerY_coordinate);
-    console.log(playerX_coordinate + " " + playerX_coordinateDOWN);
-    console.log("ALAP ELEM INFÓK:  Lelépés Xindex " + playerX_coordinate + "\ty: " + playerY_coordinate +
-        "\nshapetype" + matrix[playerX_coordinate][playerY_coordinate].get_shape_type() + " " +
-        "\nplayer: " + matrix[playerX_coordinate][playerY_coordinate].get_isPLAYER_IN() + " " +
-        "\ntreauser: " + matrix[playerX_coordinate][playerY_coordinate].get_isTREASURE_IN() + " " +
-        "\nconstans: " + matrix[playerX_coordinate][playerY_coordinate].get_isConstant() + " " +
-        "\nbal: " + matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_LEFT() + " " +
-        "\nfel: " + matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_UP() + " " +
-        "\njobb: " + matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_RIGHT() + " " +
-        "\nlenn: " + matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_DOWN() + " " +
-        "\nkep: " + matrix[playerX_coordinate][playerY_coordinate].getImage() + " " +
-        "\nfok: " + matrix[playerX_coordinate][playerY_coordinate].getRotation_Degree() + " ");
-    console.log("----------------------------------------------");
-    console.log("Másik elem infók  " + playerX_coordinateDOWN + "\ty: " + playerY_coordinate +
-        "\nshapetype" + matrix[playerX_coordinateDOWN][playerY_coordinate].get_shape_type() + " " +
-        "\nplayer: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isPLAYER_IN() + " " +
-        "\ntreauser: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isTREASURE_IN() + " " +
-        "\nconstans: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isConstant() + " " +
-        "\nbal: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isOPEN_LEFT() + " " +
-        "\nfel: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isOPEN_UP() + " " +
-        "\njobb: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isOPEN_RIGHT() + " " +
-        "\nlenn: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isOPEN_DOWN() + " " +
-        "\nkep: " + matrix[playerX_coordinateDOWN][playerY_coordinate].getImage() + " " +
-        "\nfok: " + matrix[playerX_coordinateDOWN][playerY_coordinate].getRotation_Degree() + " ");
 
 
     console.log(playerX_coordinate + " " + playerY_coordinate);
@@ -1291,6 +1267,31 @@ function down_click() {
 
 
     if (matrix[playerX_coordinateDOWN][playerY_coordinate].get_isOPEN_UP() === true && matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_DOWN() === true) {
+        console.log(playerX_coordinate + " " + playerY_coordinate);
+        console.log(playerX_coordinate + " " + playerX_coordinateDOWN);
+        console.log("ALAP ELEM INFÓK:  Lelépés Xindex " + playerX_coordinate + "\ty: " + playerY_coordinate +
+            "\nshapetype" + matrix[playerX_coordinate][playerY_coordinate].get_shape_type() + " " +
+            "\nplayer: " + matrix[playerX_coordinate][playerY_coordinate].get_isPLAYER_IN() + " " +
+            "\ntreauser: " + matrix[playerX_coordinate][playerY_coordinate].get_isTREASURE_IN() + " " +
+            "\nconstans: " + matrix[playerX_coordinate][playerY_coordinate].get_isConstant() + " " +
+            "\nbal: " + matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_LEFT() + " " +
+            "\nfel: " + matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_UP() + " " +
+            "\njobb: " + matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_RIGHT() + " " +
+            "\nlenn: " + matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_DOWN() + " " +
+            "\nkep: " + matrix[playerX_coordinate][playerY_coordinate].getImage() + " " +
+            "\nfok: " + matrix[playerX_coordinate][playerY_coordinate].getRotation_Degree() + " ");
+        console.log("----------------------------------------------");
+        console.log("Másik elem infók  " + playerX_coordinateDOWN + "\ty: " + playerY_coordinate +
+            "\nshapetype" + matrix[playerX_coordinateDOWN][playerY_coordinate].get_shape_type() + " " +
+            "\nplayer: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isPLAYER_IN() + " " +
+            "\ntreauser: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isTREASURE_IN() + " " +
+            "\nconstans: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isConstant() + " " +
+            "\nbal: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isOPEN_LEFT() + " " +
+            "\nfel: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isOPEN_UP() + " " +
+            "\njobb: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isOPEN_RIGHT() + " " +
+            "\nlenn: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isOPEN_DOWN() + " " +
+            "\nkep: " + matrix[playerX_coordinateDOWN][playerY_coordinate].getImage() + " " +
+            "\nfok: " + matrix[playerX_coordinateDOWN][playerY_coordinate].getRotation_Degree() + " ");
 
 
         if (matrix[playerX_coordinateDOWN][playerY_coordinate].get_isTREASURE_IN() === true) {
@@ -1340,35 +1341,36 @@ function down_click() {
         }
 
 
+        console.log("ALAP ELEM INFÓK:  Lelépés UTÁN Xindex " + playerX_coordinate + "\ty: " + playerY_coordinate +
+            "\nshapetype" + matrix[playerX_coordinate][playerY_coordinate].get_shape_type() + " " +
+            "\nplayer: " + matrix[playerX_coordinate][playerY_coordinate].get_isPLAYER_IN() + " " +
+            "\ntreauser: " + matrix[playerX_coordinate][playerY_coordinate].get_isTREASURE_IN() + " " +
+            "\nconstans: " + matrix[playerX_coordinate][playerY_coordinate].get_isConstant() + " " +
+            "\nbal: " + matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_LEFT() + " " +
+            "\nfel: " + matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_UP() + " " +
+            "\njobb: " + matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_RIGHT() + " " +
+            "\nlenn: " + matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_DOWN() + " " +
+            "\nkep: " + matrix[playerX_coordinate][playerY_coordinate].getImage() + " " +
+            "\nfok: " + matrix[playerX_coordinate][playerY_coordinate].getRotation_Degree() + " ");
+        console.log("----------------------------------------------");
+        console.log("Másik elem infók  elépés UTÁN " + playerX_coordinateDOWN + "\ty: " + playerY_coordinate +
+            "\nshapetype" + matrix[playerX_coordinateDOWN][playerY_coordinate].get_shape_type() + " " +
+            "\nplayer: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isPLAYER_IN() + " " +
+            "\ntreauser: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isTREASURE_IN() + " " +
+            "\nconstans: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isConstant() + " " +
+            "\nbal: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isOPEN_LEFT() + " " +
+            "\nfel: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isOPEN_UP() + " " +
+            "\njobb: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isOPEN_RIGHT() + " " +
+            "\nlenn: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isOPEN_DOWN() + " " +
+            "\nkep: " + matrix[playerX_coordinateDOWN][playerY_coordinate].getImage() + " " +
+            "\nfok: " + matrix[playerX_coordinateDOWN][playerY_coordinate].getRotation_Degree() + " ");
+        console.log("----------------------------------------------");
+        console.log("----------------------------------------------");
+        console.log("----------------------------------------------");
+
     }
 
 
-    console.log("ALAP ELEM INFÓK:  Lelépés UTÁN Xindex " + playerX_coordinate + "\ty: " + playerY_coordinate +
-        "\nshapetype" + matrix[playerX_coordinate][playerY_coordinate].get_shape_type() + " " +
-        "\nplayer: " + matrix[playerX_coordinate][playerY_coordinate].get_isPLAYER_IN() + " " +
-        "\ntreauser: " + matrix[playerX_coordinate][playerY_coordinate].get_isTREASURE_IN() + " " +
-        "\nconstans: " + matrix[playerX_coordinate][playerY_coordinate].get_isConstant() + " " +
-        "\nbal: " + matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_LEFT() + " " +
-        "\nfel: " + matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_UP() + " " +
-        "\njobb: " + matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_RIGHT() + " " +
-        "\nlenn: " + matrix[playerX_coordinate][playerY_coordinate].get_isOPEN_DOWN() + " " +
-        "\nkep: " + matrix[playerX_coordinate][playerY_coordinate].getImage() + " " +
-        "\nfok: " + matrix[playerX_coordinate][playerY_coordinate].getRotation_Degree() + " ");
-    console.log("----------------------------------------------");
-    console.log("Másik elem infók  elépés UTÁN " + playerX_coordinateDOWN + "\ty: " + playerY_coordinate +
-        "\nshapetype" + matrix[playerX_coordinateDOWN][playerY_coordinate].get_shape_type() + " " +
-        "\nplayer: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isPLAYER_IN() + " " +
-        "\ntreauser: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isTREASURE_IN() + " " +
-        "\nconstans: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isConstant() + " " +
-        "\nbal: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isOPEN_LEFT() + " " +
-        "\nfel: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isOPEN_UP() + " " +
-        "\njobb: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isOPEN_RIGHT() + " " +
-        "\nlenn: " + matrix[playerX_coordinateDOWN][playerY_coordinate].get_isOPEN_DOWN() + " " +
-        "\nkep: " + matrix[playerX_coordinateDOWN][playerY_coordinate].getImage() + " " +
-        "\nfok: " + matrix[playerX_coordinateDOWN][playerY_coordinate].getRotation_Degree() + " ");
-    console.log("----------------------------------------------");
-    console.log("----------------------------------------------");
-    console.log("----------------------------------------------");
 }
 
 ///EVEENT LISTENERS
