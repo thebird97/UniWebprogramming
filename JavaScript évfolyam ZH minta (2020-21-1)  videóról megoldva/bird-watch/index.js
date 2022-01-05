@@ -113,24 +113,47 @@ function task1_f() {
 }
 
 
+
+
 function task2_f() {
     /*
     g. (1 pont) A task-2 azonosítójú elembe írd ki, hogy hány helységben láttak valamelyik madárfajból 10-nél többet (hány sorban van olyan cella, aminek az értéke nagyobb, mint 10)!
      */
-    let cnt = 0;
+    let row_cnt = 0;
     for (let i = 0; i < matrix.length; i++) {
         let mix = matrix[i];
         for (let j = 0; j < mix.length; j++) {
-            if(matrix[i][j]>10){
-                cnt++;
+            if(matrix[i][j]>5){
+                row_cnt++;
+                break;
             }
         }
     }
-    task2.innerHTML = cnt;
+    task2.innerHTML = row_cnt;
+
+    //orai megoldas:
+  //  matrix.reduce((s,x)=>s+numOf10(x),0)
 
 
 }
+/*
+function numOf10(row) {
+  return   row.filter(el => el === 10).length
+}*/
 
 function task3_f() {
+
+    /*
+    . (1 pont) A task-3 azonosítójú elembe írd ki egy olyan helység sorszámát, ahol a madár se jár (egyik madárfajból se észleltek egyet sem)!
+    Ha nem létezik ilyen helység, akkor ugyanide írd ki, hogy "No"!
+
+     */
+///find index egy sorszámot ad vissza
+   const place = matrix.findIndex(sor=>!(sor.some(el => el !== 0)));
+   if(place>-1){
+       task3.innerHTML = parseInt(place) + 1;
+   }else{
+       task3.innerHTML = "No";
+   }
 
 }
