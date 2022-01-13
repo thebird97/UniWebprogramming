@@ -1,0 +1,17 @@
+{
+  "userid1":{
+    "id":"userid1",
+    "username":"user1",
+    "email":"email1"
+  },
+  "userid2":{
+    "id":"userid2",
+    "username":"user2",
+    "email":"email1"
+  },
+  "admin":{
+    "id":"admin",
+    "username":"admin",
+    "email":" admin@elstadion.hu"
+  }
+}

@@ -50,12 +50,16 @@ $comments = [
         'teamid' => 'teamid1',
     ],
 ];
+$json = json_encode($comments);
 
+var_dump($json);
 
-file_put_contents('teams.json', json_encode($teams, JSON_PRETTY_PRINT));
-file_put_contents('matches.json', json_encode($matches, JSON_PRETTY_PRINT));
-file_put_contents('users.json', json_encode($users, JSON_PRETTY_PRINT));
-file_put_contents('comments.json', json_encode($comments, JSON_PRETTY_PRINT));
+/*
+file_put_contents('teams.json', json_encode($teams, JSON_FORCE_OBJECT));
+file_put_contents('matches.json', json_encode($matches, JSON_FORCE_OBJECT));
+file_put_contents('users.json', json_encode($users, JSON_FORCE_OBJECT));
+file_put_contents('comments.json', json_encode($comments, JSON_FORCE_OBJECT));
+*/
 echo("convert okay");
 
 ?>

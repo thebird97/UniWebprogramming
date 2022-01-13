@@ -23,8 +23,8 @@ Minimálisan teljesítendő (enélkül nem fogadjuk el, 5 pont)
 
 Az alap feladatok (15 pont)
 
-[] Főoldal: Legutóbbi 5 meccs listázása (1 pont)
-[] Csapatrészletek: ahol van eredmény, a csapatnév zöld, ha nyertek, piros, ha vesztettek, sárga döntetlennél (0,5 pont)
+[x] Főoldal: Legutóbbi 5 meccs listázása (1 pont)
+[x] Csapatrészletek: ahol van eredmény, a csapatnév zöld, ha nyertek, piros, ha vesztettek, sárga döntetlennél (0,5 pont)
 [ ] Csapatrészletek: Új hozzászólás bejelentkezés nélkül le van tilva (0,5 pont)
 [ ] Csapatrészletek: Új hozzászólás bejelentkezés után elérhető (0,5 pont)
 [ ] Csapatrészletek: Új hozzászólás üresen hibát ad (0,5 pont)
@@ -39,7 +39,7 @@ Az alap feladatok (15 pont)
 [ ] Admin: meccseredmény módosítása: hibakezelés, állapottartás, sikeres mentés (3 pont)
 [ ] Admin: hozzászólás törlése csak admin felhasználóval érhető el (0,5 pont)
 [ ] Admin: hozzászólás törlése sikeres (1 pont)
-[ ] Igényes kialakítás (1 pont)
+[x] Igényes kialakítás (1 pont)
 [ ] **1 hét késés (-6 pont)**
 [ ] **1 hétnél több késés (nincs elfogadva a beadandó, nincs jegy)**
 

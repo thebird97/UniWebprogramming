@@ -1,0 +1,52 @@
+{
+  "commentid1":{
+    "author":"userid1",
+    "text":"Hajr\u00e1 fi\u00fak!",
+    "teamid":"teamid1",
+    "date": "2021-01-01"
+  },
+  "commentid2":{
+    "author":"userid2",
+    "text":"J\u00f3 volt a legut\u00f3bbi meccs!",
+    "teamid":"teamid1",
+    "date": "2021-01-02"
+  },
+  "commentid3":{
+    "author":"userid3",
+    "text":"Meg egy ilyet!",
+    "teamid":"teamid1",
+    "date": "2021-01-03"
+  },
+
+  "commentid4":{
+    "author":"userid2",
+    "text":"Jo volt!",
+    "teamid":"teamid2",
+    "date": "2021-01-02"
+  },
+  "commentid5":{
+    "author":"userid3",
+    "text":"Ennyi!",
+    "teamid":"teamid2",
+    "date": "2021-01-02"
+  },
+
+  "commentid6":{
+    "author":"userid4",
+    "text":"Ennyi!3",
+    "teamid":"teamid3",
+    "date": "2021-01-02"
+  },
+  "commentid7":{
+    "author":"userid3",
+    "text":"Ennyi!4",
+    "teamid":"teamid4",
+    "date": "2021-01-02"
+  },
+  "commentid8":{
+    "author":"userid9",
+    "text":"Ennyi! Az 5ös csapat tudja mi fán terem a foci!",
+    "teamid":"teamid5",
+    "date": "2021-01-03"
+  }
+}
