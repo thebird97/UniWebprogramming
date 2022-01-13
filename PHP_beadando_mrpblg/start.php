@@ -1,7 +1,16 @@
 <?php
+
 require_once("lib/storage.php");
 require_once("lib/auth.php");
-require_once("data/alldata.php");
+session_start();
 
-$messages = new Storage(new JsonIO("data/messages.json"));
-$auth = new Auth(new Storage(new JsonIO("data/alldata.php")));
+
+/*
+id => [
+    from: neptun
+    to: neptun
+    content: szöveg
+]
+*/
+
+$auth = new Auth(new Storage(new JsonIO("data/users.json")));

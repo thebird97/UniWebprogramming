@@ -80,7 +80,7 @@ $sliced_matches = array_slice($matches, 0, 5)
 
 </ul>
 <h2>Regisztráj vagy jelentkezz be: </h2>
-<div><a href="login.php">Bejelentkezés</a></div>
-<div><a href="register.php">Regisztráció</a></div>
+<a href="login.php">Bejelentkezés</a>
+<a href="register.php">Regisztráció</a>
 </body>
 </html>

@@ -41,6 +41,20 @@ function ThisTeamComments($id, $comments)
 }
 
 
+function letezik($kulcs){
+    return (isset($_POST[$kulcs]));
+}
+$hibak = [];
+$eredmeny = [];
+if(count($_POST)>0){
+    if(letezik("komment") && strlen(trim($_POST["komment"]))>0){
+        $eredmeny["komment"] = $_POST["komment"];
+    }else{
+        $hibak["nev"] = "A komment nem lehet üres!";
+    }
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -117,6 +131,7 @@ function ThisTeamComments($id, $comments)
 </head>
 <body>
 <h1>Csapatrészletek oldal</h1>
+<a href="index.php">Vissza a főoldalra!</a>
 <h2>Csapat neve</h2>
 <div><?php echo $teams[$id]["name"] ?></div>
 <h2>Csapat városa</h2>
@@ -171,13 +186,10 @@ function ThisTeamComments($id, $comments)
 <ul>
 
 
-
-
-
     <?php $thiscomments = ThisTeamComments($id, $comments);
 
     foreach ($thiscomments as $tkey => $tvalue) { ?>
-        <li>Ki kommentelt?  <b><?php echo $tvalue["author"]; ?></b></li>
+        <li>Ki kommentelt? <b><?php echo $tvalue["author"]; ?></b></li>
         <li>A komment szövege: <?php echo $tvalue["text"]; ?></li>
         <li>Időpont: <?php echo $tvalue["date"]; ?></li>
         <hr>
@@ -186,6 +198,38 @@ function ThisTeamComments($id, $comments)
 </ul>
 <br>
 <h2>Új komment írása:</h2>
+<?
+require_once("start.php");
+
+if (!$auth->is_authenticated()) {
+    // header("Location: index.php");
+    echo "Nem tudsz hozzá szólni mert nem vagy bejelentkezve!";
+}
+?>
+<br>
+<?php
+    if(count($hibak)!==0){
+        foreach ($hibak as $hiba) {
+            echo $hiba;
+        }
+    }else{
+       echo $eredmeny["komment"];
+        array_push($comments["author"],"usernamex");
+        array_push($comments["text"],$eredmeny["komment"]);
+        array_push($comments["teamid"],$id);
+        array_push( $comments["date"],date('Y-M-D'));
+
+
+        file_put_contents('data/comments.json',json_encode($comments));
+    }
+?>
+<form action="details.php?id=<?php echo $id?>" method="POST">
+    <input id="komment" name="komment"  placeholder="Írj hozzászólást!">
+
+    <input type="submit" value="Küldés">
+
+</form>
+
 
 
 </body>
