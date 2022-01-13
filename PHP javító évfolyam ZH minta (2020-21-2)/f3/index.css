@@ -1,0 +1,46 @@
+@import url('https://cdn.jsdelivr.net/gh/elte-fi/www-assets@19.10.16/styles/mdss.min.css');
+
+div#card {
+  width: 716px;
+  height: 452px;
+  border-radius: 20px;
+  background-image: url(igazolvany.jpg);
+  position: relative;
+}
+
+div#card span {
+  position: absolute;
+  background-color: white;
+  width: 200px;
+}
+
+#id {
+  top: 121px;
+  left: 484px;
+  width: 150px !important;
+}
+
+#name {
+  top: 103px;
+  left: 14px;
+}
+#taj {
+  top: 351px;
+  left: 14px;
+}
+#vaccine {
+  top: 194px;
+  left: 14px;
+}
+#time_of_vaccination {
+  top: 420px;
+  left: 14px;
+}
+a.print {
+  display: block;
+  margin: 30px auto;
+  font-size: xx-large;
+  text-align: center;
+  border: 2px solid blue;
+  border-radius: 10px;
+}

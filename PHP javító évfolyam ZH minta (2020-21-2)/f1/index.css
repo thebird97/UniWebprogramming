@@ -1,0 +1,20 @@
+@import url('https://cdn.jsdelivr.net/gh/elte-fi/www-assets@19.10.16/styles/mdss.min.css');
+
+.milestone {
+    background-color: #517d81;
+    color: white;
+    font-weight: bold;
+}
+
+polyline {
+    fill: none;
+    stroke: #517d81;
+    stroke-width: 2;
+}
+
+svg {
+    display: block;
+    margin: 0 auto;
+    border: 2px solid gray;
+    box-shadow: 0 0 10px gray;
+}

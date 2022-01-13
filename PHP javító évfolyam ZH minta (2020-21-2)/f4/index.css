@@ -1,0 +1,30 @@
+@import url('https://cdn.jsdelivr.net/gh/elte-fi/www-assets@19.10.16/styles/mdss.min.css');
+
+#error {
+    display: block;
+    margin: 0 auto;
+    color: red;
+    text-align: center;
+}
+
+table#people th {
+    text-align: center;
+}
+
+table#people tr:nth-of-type(2) td{
+    height: 240px;
+    width: 300px;
+    margin: 0;
+    padding: 0;
+    font-size: 3em;
+    text-shadow: 2px 2px 2px lightgray;
+    text-align: center;
+}
+
+table#people tr:nth-of-type(2) td:nth-of-type(1) {
+    background-image: url('terasz.png');
+}
+
+table#people tr:nth-of-type(2) td:nth-of-type(2) {
+    background-image: url('belter.png');
+}

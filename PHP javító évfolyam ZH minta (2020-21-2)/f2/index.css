@@ -1,0 +1,6 @@
+@import url('https://cdn.jsdelivr.net/gh/elte-fi/www-assets@19.10.16/styles/mdss.min.css');
+
+div label:first-of-type, button {
+    display: inline-block;
+    width: 150px;
+}

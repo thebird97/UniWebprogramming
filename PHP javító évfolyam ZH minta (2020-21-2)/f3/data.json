@@ -1,0 +1,29 @@
+{
+    "60b639c47716f": {
+        "name": "K\u00e9rlek Nefelejcs",
+        "taj": "123456789",
+        "vaccine": "AstraZeneca",
+        "time_of_vaccination": "2021-06-01 15:43",
+        "2nd_vaccination": false,
+        "id": "60b639c47716f",
+        "printed": false
+    },
+    "60b639e2efbbd": {
+        "name": "Mosolyg\u00f3 Napsug\u00e1r",
+        "taj": "987654321",
+        "vaccine": "Szputnyik",
+        "time_of_vaccination": "2021-05-04 15:45",
+        "2nd_vaccination": true,
+        "id": "60b639e2efbbd",
+        "printed": true
+    },
+    "60b639fde2598": {
+        "name": "Hirte Lenke",
+        "taj": "567891234",
+        "vaccine": "Pfizer",
+        "time_of_vaccination": "2021-04-14 15:45",
+        "2nd_vaccination": true,
+        "id": "60b639fde2598",
+        "printed": false
+    }
+}
