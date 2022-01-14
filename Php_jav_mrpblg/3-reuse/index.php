@@ -1,3 +1,9 @@
+<?php
+// (1 pont) Az index.php oldalon listázd ki a JSON állományban szereplő hirdetéseket a megadott minta szerint!
+
+$ads=json_decode(file_get_contents('ads.json'),true);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,15 +38,17 @@
       <button type="submit">Search</button>
     </fieldset>
   </form>
+  <?php foreach ($ads as $akey => $avalue){?>
   <div id="ads">
     <div class="item">
-      <img src="https://www.prospectpizzabk.com/wp-content/uploads/2020/11/Placeholder-1.png">
+      <img src="<?php  echo $avalue["url"]; ?>">
       <div>
-        <h3>Title</h3>
-        <p>Description</p>
-        <p><small>2022.01.14. 16:23:34</small></p>
+        <h3><?php  echo $avalue["title"]; ?></h3>
+        <p><?php  echo $avalue["description"]; ?></p>
+        <p><small><?php  echo $avalue["created_at"]; ?></small></p>
       </div>
     </div>
   </div>
+<?php } ?>
 </body>
 </html>
