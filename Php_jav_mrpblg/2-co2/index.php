@@ -61,8 +61,6 @@ if (count($_GET) > 0) {
 
     //e. (1 pont) A paid (fizetve) jelölőmezőt kötelezően be kell jelölni!
     if (letezik("paid")) {
-
-
         if ( in_array("tst", $_GET["paid"] )) {
             $eredmeny["paid"] = $_GET["paid"];
         } else {
@@ -73,7 +71,11 @@ if (count($_GET) > 0) {
     }
 
 }
-print_r($hibak);
+if(count($hibak)>0){
+    echo "van hiba";
+    print_r($hibak);
+}
+
 echo "<br>";
 var_dump($eredmeny);
 
@@ -132,7 +134,7 @@ function hibatKiir($p){
     <label for="i2">Destination station:</label> <input type="text" name="journey_to" id="i2" value="<?=allapottarto("journey_to")?>"> <div style="color: red"><?= hibatKiir("journey_to")?></div> <br>
     <label for="i3">Ticket price (HUF):</label> <input type="text" name="price" id="i3" value="<?=allapottarto("price")?>"><div style="color: red"><?= hibatKiir("price")?> </div><br>
     <label for="i4">Distance (km):</label> <input type="text" name="distance" id="i4" value="<?=allapottarto("distance")?>"><div style="color: red"><?= hibatKiir("distance")?> </div><br>
-    <input type="checkbox" name="paid" id="i5" value="tst"><label for="i5">Ticket paid</label><div style="color: red"> <?= hibatKiir("paid")?></div><br>
+    <input type="checkbox" name="paid[]" id="i5" value="tst"><label for="i5">Ticket paid</label><div style="color: red"> <?= hibatKiir("paid")?></div><br>
     <button type="submit">Submit</button>
 </form>
 <?php if(count($hibak)==0){ ?>
